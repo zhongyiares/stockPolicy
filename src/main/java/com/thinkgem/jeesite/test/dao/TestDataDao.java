@@ -14,5 +14,7 @@ import com.thinkgem.jeesite.test.entity.TestData;
  */
 @MyBatisDao
 public interface TestDataDao extends CrudDao<TestData> {
-	
+
+
+
 }
