@@ -1,0 +1,75 @@
+.searchDiv {
+    width: 290px;
+    -webkit-transition: box-shadow .3s ease;
+    -moz-transition: box-shadow .3s ease;
+    -ms-transition: box-shadow .3s ease;
+    -o-transition: box-shadow .3s ease;
+    transition: box-shadow .3s ease;
+    border-radius: 3px;
+    top: 35% !important;
+    margin-top: 10px;
+    position: relative;
+}
+.searchDiv input[type="text"] {
+    background-image: url("../images/ssq-s.png");
+    width: 240px;
+    height: 38px;
+    font-size: 14px;
+    color: #e0e0e0;
+    padding: 0 15px;
+    padding-left: 42px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    background-size: auto 60%;
+    background-repeat: no-repeat;
+    background-position: 8px center;
+    background-color: rgba(0,0,0,0.2);
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    border: 1px solid rgba(255,255,255,0.5) !important;
+    outline: none;
+}
+.searchDiv input[type="button"] {
+    height: 38px;
+    width: 50px;
+    background-image: url(../images/ico-search.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    right: 0;
+    position: relative;
+    left: -3px;
+    float: right;
+    background-color: #464646;
+    border: 1px solid rgba(255,255,255,0.5) !important;
+    outline: none;
+}
+.searchTableDiv {
+    width: 100%;
+    display: none;
+}
+.searchTableDiv table {
+    padding-bottom: 0;
+    border: 1px solid rgba(255,255,255,0.5);
+    background-color: transparent;
+    position: absolute;
+    top: 37px;
+}
+.searchTableDiv table tr td {
+    text-align: left;
+    font-size: 14px;
+    padding: 8px 20px;
+    color: rgba(255,255,255,0.5);
+    /* border: 1px solid rgba(255,255,255,0.3); */
+    background-color: rgba(255,255,255,0.5);
+}
