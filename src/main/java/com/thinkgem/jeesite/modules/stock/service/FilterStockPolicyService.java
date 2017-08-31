@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface FilterStockPolicyService {
 
-    public List filterStock(String startDate, String endDate, double stockPrice, double less);
+    public List filterStock(String startDate, String endDate, double stockPrice, double less,int startNo , int endNo);
 
-    public List<StockInfoVO> conditionFilterStock(String startDate, String endDate, double stockPrice, double less);
+    public List<StockInfoVO> conditionFilterStock(String startDate, String endDate, double stockPrice, double less,int startNo , int endNo);
 }

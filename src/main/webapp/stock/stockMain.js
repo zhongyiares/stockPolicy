@@ -56,7 +56,7 @@ var time_range = function (beginTime, endTime, nowTime) {
 function getAverage(list, name){
     var length = list.length;
     var currentPriceTotal=0,currentProfitTotal=0,currentPriceUpDownRateTotal=0,turnoverRateTotal=0
-        ,circulationMarketValueTotal=0,totalValueTotal=0,priceEarningRatioTotal=0,bigDealTotal=0,conditionNumTotal=0;
+        ,circulationMarketValueTotal=0,totalValueTotal=0,priceEarningRatioTotal=0,bigDealTotal=0,conditionNumTotal=0 ,limitUpPrice = 0 , diffVal = 0;
     for(var i=0;i<list.length;i++){
         currentPriceTotal += parseFloat(list[i].currentPrice);
         currentProfitTotal += list[i].currentProfit;
@@ -71,6 +71,8 @@ function getAverage(list, name){
         }
         bigDealTotal += parseFloat(list[i].bigDeal);
         conditionNumTotal += list[i].conditionNum;
+        limitUpPrice += list[i].limitUpPrice;
+        diffVal += list[i].diffVal;
     }
     var stockName;
     if(name != undefined || name != null){
@@ -80,7 +82,7 @@ function getAverage(list, name){
     }
     var node = {
         stockName:stockName,
-        windCode:'',
+        stockCode:'',
         currentPrice:parseFloat((currentPriceTotal/length).toFixed(2)),
         currentProfit:currentProfitTotal/length,
         currentPriceUpDownRate:parseFloat((currentPriceUpDownRateTotal/length).toFixed(2)),
@@ -89,7 +91,9 @@ function getAverage(list, name){
         totalValue:totalValueTotal/length,
         priceEarningRatio:parseFloat((priceEarningRatioTotal/length).toFixed(2)),
         bigDeal:parseFloat((bigDealTotal/length).toFixed(2)),
-        conditionNum:parseFloat((conditionNumTotal/length).toFixed(2))
+        conditionNum:parseFloat((conditionNumTotal/length).toFixed(2)),
+        limitUpPrice : parseFloat((limitUpPrice / length).toFixed(2)),
+        diffVal : parseFloat((diffVal / length).toFixed(2))
     }
     //list.unshift(node);
     return node;
@@ -220,11 +224,16 @@ function hideLoading(){
  *刷新趋同性
  */
 $('#correlBtn').click(function () {
-    showLoading()
+    showLoading();
+    var beginDate = $('#beginDate').val();
+    var endDate = $('#endDate').val();
+    var stockPrice = $('#stockPrice').val();
+    var diffVal = $('#diffVal').val();
+    var param = {"beginDate":beginDate,"endDate":endDate,"stockPrice":stockPrice,"diffVal":diffVal};
     $.ajax({
         type: 'POST',
         dataType: "json",
-        //data: param,
+        data: param,
         url: "/policy/view",//请求的action路径
         error: function (data) {//请求失败处理函数
              alert("请求失败11");
@@ -232,6 +241,8 @@ $('#correlBtn').click(function () {
         success: function (data) {
             if(data.state == 0){
                 var stockInfoVOList = data.stockInfoVOList;
+                //stockInfoVOList.sort(by("currentPriceUpDownRate",null,"ASC"));
+                dealAverage(stockInfoVOList);
                 showTable(stockInfoVOList);
                 hideLoading();
             }else{

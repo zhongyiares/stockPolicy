@@ -10,12 +10,14 @@ import com.thinkgem.jeesite.modules.stock.service.FilterStockPolicyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 通知通告Controller
@@ -32,9 +34,13 @@ public class StockPolicyController extends BaseController {
 	//@RequiresPermissions("oa:oaNotify:view")
 	@ResponseBody
 	@RequestMapping(value = "view")
-	public JSONObject list( HttpServletRequest request, HttpServletResponse response, Model model) {
+	public JSONObject list( HttpServletRequest request, HttpServletResponse response) {
 		JSONObject jsonObjectResult = new JSONObject();
-		List<StockInfoVO> stockInfoVOList =  filterStockPolicyService.conditionFilterStock("20170801","20170825",15,-3);
+		String beginDate =  request.getParameter("beginDate");
+		String endDate =  request.getParameter("endDate");
+		String stockPrice =  request.getParameter("stockPrice");
+		String diffVal =  request.getParameter("diffVal");
+		List<StockInfoVO> stockInfoVOList =  filterStockPolicyService.conditionFilterStock(beginDate,endDate,Double.parseDouble(stockPrice),Double.parseDouble(diffVal),0,50);
 		if (stockInfoVOList != null) {
 			jsonObjectResult.put("state", 0);
 			jsonObjectResult.put("stockInfoVOList",stockInfoVOList);

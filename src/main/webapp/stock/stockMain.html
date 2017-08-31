@@ -5,21 +5,33 @@
     <title>数据</title>
     <link rel="stylesheet" href="css/main.css"/>
     <link rel="stylesheet" href="css/search.css"/>
+    <link rel="stylesheet" href="../static/My97DatePicker/skin/WdatePicker.css"/>
+    <link rel="stylesheet" href="../static/bootstrap/2.3.1/docs/assets/css/bootstrap.css"/>
     <style>
     </style>
 </head>
 <body>
 <div class="index-n-table">
 
-    <div class="fl" style="margin: 5px 5px;padding: 5px;margin-left: 20px">
+    <div class="fl" style="margin: 5px 5px;padding: 5px;margin-left: 20px;display:inline-block; width: 80%;">
 <!--        <form class="fl" style="display: inline-block" action="/index/getAllIndexData.do">
             <input id="exportExcelAllIndex" type="button" class="sxq-btn ml10" value="医疗指标数据">
         </form>
         <form class="fl" style="display: inline-block" action="/correlation/exportExcelXAAplha.do">
             <input id="exportExcelXAAplha" type="button" class="sxq-btn ml10" value="雄安ALPHA">
         </form>-->
-        <button id="correlBtn" class="flash-btn fl mt20"
-                style="width:110px;margin-right: 10px;position: relative;left: 30px;top: -1px">刷新数据<i></i></button>
+        <label class="labelStcok">开始日期：</label><input id="beginDate" name="beginDate" type="text"  maxlength="20" class="input-small Wdate labelStcok"
+                                   value="" onclick="WdatePicker({dateFmt:'yyyyMMdd',isShowClear:false});"/>
+        <label class="labelStcok">结束日期：</label><input id="endDate" name="endDate" type="text"  maxlength="20" class="input-small Wdate labelStcok"
+                                   value="" onclick="WdatePicker({dateFmt:'yyyyMMdd',isShowClear:false});"/>
+        <label class="labelStcok" >股票价格：</label><input id="stockPrice" name="stockPrice" type="text"  maxlength="20" class="input-small labelStcok"
+                                   value="15" />
+        <label class="labelStcok" >差值：</label><input id="diffVal" name="diffVal" type="text"  maxlength="20" class="input-small labelStcok"
+                                   value="0" />
+
+       <!-- <button id="correlBtn" style="width: 63px;height: 30px;" class="btn btn-primary" type="button" value="查询"  />-->
+
+        <input id="correlBtn" class="btn btn-primary" type="submit" value="查询"/>
 
     </div>
     <div class="nt1 nt">
@@ -56,6 +68,7 @@
 </div>
 </body>
 <script src="../static/jquery/jquery-1.8.3.js"></script>
+<script src="../static/My97DatePicker/WdatePicker.js"></script>
 <script src="stockMain.js"></script>
 <script src="stockListTable.js"></script>
 <script>

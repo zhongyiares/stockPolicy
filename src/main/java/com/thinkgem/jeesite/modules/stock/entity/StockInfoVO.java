@@ -69,6 +69,8 @@ public class StockInfoVO {
     private double yearAlpha;
     //年beta
     private double yearBeta;
+    //条件个数
+    private Integer conditionNum;
 
     public Double getBigDeal() {
         return bigDeal;
@@ -308,5 +310,13 @@ public class StockInfoVO {
 
     public void setYearBeta(double yearBeta) {
         this.yearBeta = yearBeta;
+    }
+
+    public Integer getConditionNum() {
+        return conditionNum;
+    }
+
+    public void setConditionNum(Integer conditionNum) {
+        this.conditionNum = conditionNum;
     }
 }

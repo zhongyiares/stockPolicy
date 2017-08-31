@@ -3,9 +3,9 @@
  */
 
 function showTable(list){
-    var str = "<tr><th style=\"width: 10%\">股票名称</th><th style=\"width: 10%\">股票代码</th><th style=\"width: 9%\">现价</th><th style=\"width: 9%\">涨停价</th>" +
-        "<th style=\"width: 9%\">涨跌幅%</th><th style=\"width: 9%\">换手%</th><th style=\"width: 9%\">流通市值(亿)</th><th style=\"width: 9%\">总市值(亿)</th> " +
-        "<th style=\"width: 9%\">市盈率</th><th style=\"width: 9%\">净流入额(万)</th><th style=\"width: 9%\">差值</th></tr>";
+    var str = "<tr><th style=\"width: 10%\">股票名称</th><th style=\"width: 10%\">股票代码</th><th style=\"width: 8%\">现价</th><th style=\"width: 8%\">涨停价</th>" +
+        "<th style=\"width: 8%\">涨跌幅%</th><th style=\"width: 8%\">换手%</th><th style=\"width: 8%\">流通市值(亿)</th><th style=\"width: 8%\">总市值(亿)</th> " +
+        "<th style=\"width: 8%\">市盈率</th><th style=\"width: 8%\">净流入额(万)</th><th style=\"width: 8%\">差值</th><th style=\"width: 8%\">满足条件数目</th></tr>";
     for(var i=0;i<list.length;i++){
         var cpuDownRateClass = "";
         var peradioClass = "";
@@ -62,8 +62,12 @@ function showTable(list){
         }else {
             str += "<td class='"+greenClass+"'>"+list[i].bigDeal+"</td>";
         }
-        //满足条件数
+        //差值
         str += "<td>"+list[i].diffVal+"</td>";
+
+        //满足条件数
+        str += "<td>"+list[i].conditionNum+"</td>";
+
         str += "</tr>";
     }
     $('.nt1Table').html(str);
