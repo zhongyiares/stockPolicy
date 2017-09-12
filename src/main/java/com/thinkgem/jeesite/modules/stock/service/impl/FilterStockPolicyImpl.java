@@ -46,4 +46,45 @@ public class FilterStockPolicyImpl implements FilterStockPolicyService {
         }
         return stockInfoVOList;
     }
+
+    @Override
+    public List<String> getTradeDatesByNum(String tradeDate, Integer num) {
+        String sql = "select f.* from (select trade_days from AShareCalendar t where trade_days <=  ? and t.s_info_exchmarket = 'SZSE' order by trade_days desc) f where rownum <=  ? ";
+        return  jdbcTemplateForRD.queryForList(sql,new Object[]{tradeDate,num},String.class);
+    }
+
+    @Override
+    public List<StockInfoVO> getStockListByDateList(List<String> tradeDateList) {
+        List<StockInfoVO> stockInfoVOList = new ArrayList<StockInfoVO>();
+        try {
+            List<String> filterStockList = new ArrayList<String>();
+            if(tradeDateList != null && tradeDateList.size() >0){
+                for(String tradeDate : tradeDateList){
+                    filterStockList = getStockList(filterStockList,tradeDate);
+                }
+            }
+            stockInfoVOList =  mutilDealStockDataListService.dealStockCodeList(filterStockList);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return stockInfoVOList;
+    }
+
+    private  List<String> getStockList(List stockList,String tradeDate){
+        StringBuilder sb = new StringBuilder();
+        sb.append("select s_info_windcode from Ashareeodprices t where trade_dt = ? and t.s_dq_change < 0 ");
+        if(stockList != null && stockList.size() >0){
+            sb.append("and t.s_info_windcode in ( ");
+            for(int i=0 ;i< stockList.size() ;i++){
+                if(i != stockList.size() -1 ){
+                    sb.append("'"+stockList.get(i)+"',");
+                }else {
+                    sb.append("'"+stockList.get(i)+"'");
+                }
+            }
+            sb.append(" )");
+        }
+        return jdbcTemplateForRD.queryForList(sb.toString(),new Object[]{tradeDate},String.class);
+    }
 }

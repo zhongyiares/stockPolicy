@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据</title>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/search.css"/>
+    <link rel="stylesheet" href="../static/My97DatePicker/skin/WdatePicker.css"/>
+    <link rel="stylesheet" href="../static/bootstrap/2.3.1/docs/assets/css/bootstrap.css"/>
+    <style>
+    </style>
+</head>
+<body>
+<div class="index-n-table">
+
+    <div class="fl" style="margin: 5px 5px;padding: 5px;margin-left: 20px;display:inline-block; width: 80%;">
+
+        <label class="labelStcok">交易日期：</label><input id="tradeDate" name="tradeDate" type="text"  maxlength="20" class="input-small Wdate labelStcok"
+                                   value="" onclick="WdatePicker({dateFmt:'yyyyMMdd',isShowClear:false});"/>
+        <label class="labelStcok" >连跌天数：</label><input id="nums" name="nums" type="text"  maxlength="20" class="input-small labelStcok"
+                                   value="0" />
+
+       <!-- <button id="correlBtn" style="width: 63px;height: 30px;" class="btn btn-primary" type="button" value="查询"  />-->
+
+        <input id="queryBtn" class="btn btn-primary" type="submit" value="查询"/>
+
+    </div>
+    <div class="nt1 nt">
+        <table cellspacing="0" cellpadding="0" class="nt1Table">
+
+        </table>
+    </div>
+    <div class="nt2 nt" style="display: none">
+        <table cellspacing="0" cellpadding="0" class="nt2Table">
+
+        </table>
+    </div>
+
+    <div class="nt3 nt" style="display: none">
+        <table cellspacing="0" cellpadding="0" class="nt3Table">
+
+        </table>
+    </div>
+
+    <div class="nt4 nt" style="display: none">
+        <table cellspacing="0" cellpadding="0" class="nt4Table">
+
+        </table>
+    </div>
+    <div class="nt5 nt" style="display: none">
+        <table cellspacing="0" cellpadding="0" class="nt5Table">
+        </table>
+    </div>
+    <div class="boardDiv nt" style="display: none">
+        <table cellspacing="0" cellpadding="0" class="boardTable">
+
+        </table>
+    </div>
+</div>
+</body>
+<script src="../static/jquery/jquery-1.8.3.js"></script>
+<script src="../static/My97DatePicker/WdatePicker.js"></script>
+<script src="continuDown.js"></script>
+<script src="stockListTable.js"></script>
+<script>
+
+</script>
+</html>
