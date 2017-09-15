@@ -57,10 +57,30 @@ public class FilterStockPolicyImpl implements FilterStockPolicyService {
     public List<StockInfoVO> getStockListByDateList(List<String> tradeDateList) {
         List<StockInfoVO> stockInfoVOList = new ArrayList<StockInfoVO>();
         try {
+            //List<String> firstFilterStockList = new ArrayList<String>();
             List<String> filterStockList = new ArrayList<String>();
+            List<String> subFilterStockList = new ArrayList<String>();
+            List<String> newSubFilterStockList = new ArrayList<String>();
             if(tradeDateList != null && tradeDateList.size() >0){
                 for(String tradeDate : tradeDateList){
-                    filterStockList = getStockList(filterStockList,tradeDate);
+                    subFilterStockList = new ArrayList<String>();
+                    newSubFilterStockList = new ArrayList<String>();
+                    int size = filterStockList.size();
+                    if(size > 0){
+                        for(int i=0;i< size ;i++){
+                            subFilterStockList.add(filterStockList.get(i));
+                            if( subFilterStockList.size() % 900 == 0){
+                                subFilterStockList = getStockList(subFilterStockList,tradeDate);
+                                newSubFilterStockList.addAll(subFilterStockList);
+                                subFilterStockList = new ArrayList<String>();
+                            }
+                        }
+                        subFilterStockList = getStockList(subFilterStockList,tradeDate);
+                        newSubFilterStockList.addAll(subFilterStockList);
+                        filterStockList = newSubFilterStockList;
+                    }else {
+                        filterStockList = getStockList(filterStockList,tradeDate);
+                    }
                 }
             }
             stockInfoVOList =  mutilDealStockDataListService.dealStockCodeList(filterStockList);
