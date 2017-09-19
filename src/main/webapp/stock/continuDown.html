@@ -17,8 +17,12 @@
 
         <label class="labelStcok">交易日期：</label><input id="tradeDate" name="tradeDate" type="text"  maxlength="20" class="input-small Wdate labelStcok"
                                    value="" onclick="WdatePicker({dateFmt:'yyyyMMdd',isShowClear:false});"/>
-        <label class="labelStcok" >连跌天数：</label><input id="nums" name="nums" type="text"  maxlength="20" class="input-small labelStcok"
+        <label class="labelStcok" >涨跌天数：</label><input id="nums" name="nums" type="text"  maxlength="20" class="input-small labelStcok"
                                    value="0" />
+        <label class="labelStcok" >涨跌：</label><select id="upDownflag" >
+            <option value="1">涨</option>
+            <option value="0">跌</option>
+        </select>
 
        <!-- <button id="correlBtn" style="width: 63px;height: 30px;" class="btn btn-primary" type="button" value="查询"  />-->
 

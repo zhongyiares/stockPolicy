@@ -180,7 +180,8 @@ $('#queryBtn').click(function () {
     showLoading();
     var tradeDate = $('#tradeDate').val();
     var nums = $('#nums').val();
-    var param = {"tradeDate":tradeDate,"nums":nums};
+    var upDownflag = $('#upDownflag').val();
+    var param = {"tradeDate":tradeDate,"nums":nums,"upDownflag":upDownflag};
     $.ajax({
         type: 'POST',
         dataType: "json",

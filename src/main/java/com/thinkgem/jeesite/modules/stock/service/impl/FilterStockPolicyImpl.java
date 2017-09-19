@@ -54,7 +54,7 @@ public class FilterStockPolicyImpl implements FilterStockPolicyService {
     }
 
     @Override
-    public List<StockInfoVO> getStockListByDateList(List<String> tradeDateList) {
+    public List<StockInfoVO> getStockListByDateList(List<String> tradeDateList,String flag) {
         List<StockInfoVO> stockInfoVOList = new ArrayList<StockInfoVO>();
         try {
             //List<String> firstFilterStockList = new ArrayList<String>();
@@ -70,16 +70,16 @@ public class FilterStockPolicyImpl implements FilterStockPolicyService {
                         for(int i=0;i< size ;i++){
                             subFilterStockList.add(filterStockList.get(i));
                             if( subFilterStockList.size() % 900 == 0){
-                                subFilterStockList = getStockList(subFilterStockList,tradeDate);
+                                subFilterStockList = getStockList(subFilterStockList,tradeDate,flag);
                                 newSubFilterStockList.addAll(subFilterStockList);
                                 subFilterStockList = new ArrayList<String>();
                             }
                         }
-                        subFilterStockList = getStockList(subFilterStockList,tradeDate);
+                        subFilterStockList = getStockList(subFilterStockList,tradeDate,flag);
                         newSubFilterStockList.addAll(subFilterStockList);
                         filterStockList = newSubFilterStockList;
                     }else {
-                        filterStockList = getStockList(filterStockList,tradeDate);
+                        filterStockList = getStockList(filterStockList,tradeDate,flag);
                     }
                 }
             }
@@ -91,9 +91,14 @@ public class FilterStockPolicyImpl implements FilterStockPolicyService {
         return stockInfoVOList;
     }
 
-    private  List<String> getStockList(List stockList,String tradeDate){
+    private  List<String> getStockList(List stockList,String tradeDate,String flag){
         StringBuilder sb = new StringBuilder();
-        sb.append("select s_info_windcode from Ashareeodprices t where trade_dt = ? and t.s_dq_change < 0 ");
+        sb.append("select s_info_windcode from Ashareeodprices t where trade_dt = ? and t.s_dq_change  ");
+        if(flag.equals("1")){
+            sb.append("> 0 ");
+        }else {
+            sb.append("< 0 ");
+        }
         if(stockList != null && stockList.size() >0){
             sb.append("and t.s_info_windcode in ( ");
             for(int i=0 ;i< stockList.size() ;i++){

@@ -53,8 +53,9 @@ public class StockPolicyController extends BaseController {
 		JSONObject jsonObjectResult = new JSONObject();
 		String tradeDate =  request.getParameter("tradeDate");
 		Integer nums =  Integer.parseInt(request.getParameter("nums"));
+		String upDownflag =  request.getParameter("upDownflag");
 		List<String> tradeDateList = filterStockPolicyService.getTradeDatesByNum(tradeDate,nums);
-		List<StockInfoVO> stockInfoVOList =  filterStockPolicyService.getStockListByDateList(tradeDateList);
+		List<StockInfoVO> stockInfoVOList =  filterStockPolicyService.getStockListByDateList(tradeDateList,upDownflag);
 		if (stockInfoVOList != null) {
 			jsonObjectResult.put("state", 0);
 			jsonObjectResult.put("stockInfoVOList",stockInfoVOList);

@@ -15,6 +15,6 @@ public interface FilterStockPolicyService {
 
     public List<String> getTradeDatesByNum(String tradeDate,Integer num);
 
-    public List<StockInfoVO> getStockListByDateList(List<String> tradeDateList);
+    public List<StockInfoVO> getStockListByDateList(List<String> tradeDateList,String flag);
 
 }
