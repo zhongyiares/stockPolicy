@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .sex{
+            margin-top: 15px;
+        }
+        .sex .box{
+            display: inline-block;
+            width: 24px;
+            height: 20px;
+            background: #09F;
+            border-radius: 50%;
+            position: relative;
+        }
+        .sex .box input{
+            width: 15px;
+            height: 15px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            z-index: 10;
+        }
+        .sex .box i{
+            width: 8px;
+            height: 8px;
+            background: #f0df09;
+            display: block;
+            border-radius: 50%;
+            position: absolute;
+            left: 6px;
+            top:6px;
+            opacity: 0;
+            z-index: 9;
+        }
+        .sex .box input:checked+i{
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+<form>
+    <input type="text"><br/>
+    <div class="sex">
+        <div class="box">
+            <input type="radio" name="sex" id="boy">
+            <i></i>
+        </div>
+        <label for="boy">男</label>
+        <div class="box">
+            <input type="radio" name="sex" id="girl">
+            <i></i>
+        </div>
+        <label for="girl">女</label>
+    </div>
+
+</form>
+
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input:enabled{
+            border: 1px solid red;
+        }
+        input:disabled{
+            border: 1px solid green;
+        }
+        input:read-only{
+            border: 1px solid burlywood;
+        }
+        input:read-write{
+            border: 1px solid #0000aa;
+        }
+        input[type="radio"]:checked{
+            opacity:0.5;
+        }
+    </style>
+</head>
+<body>
+<form>
+
+    <input type="radio" name="sex" checked>男
+    <input type="radio" name="sex">女
+    <input type="radio" name="sex">保密
+
+    <br/>
+
+    <input type="text" value="123"><br/>
+    <input type="text" disabled value="123"><br/>
+    <input type="text" value="123" readonly><br/>
+    <input type="text"><br/>
+
+</form>
+
+</body>
+</html>

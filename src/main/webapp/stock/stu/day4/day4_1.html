@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+   /* input[type="text"]{
+        border: 1px solid red;
+    }*/
+
+    .box{
+        width: 600px;
+        height: 600px;
+        background: #ccc;
+    }
+    .box div{
+        width: 120px;
+        height: 120px;
+        border: 1px solid #000;
+        float: left;
+        margin: 5px;
+    }
+    .box div[class^="one"]{
+        background: red;
+    }
+    .box div[class^="two"]{
+        background: green;
+    }
+    .box div[class$="1"]{
+        background: yellow;
+    }
+   /* .box div[class*="o"]{
+        background: grey;
+    }*/
+
+    .box div[class*="one"]{
+        background: #6ddb00;
+    }
+    a[href^="www"]{
+        color: red;
+    }
+    img[src$="jpg"]{
+        width:300px ;
+    }
+</style>
+<body>
+
+<!--<form>
+    <input type="text"><br/>
+    <input type="password"><br/>
+    <input type="radio"><br/>
+    <input type="submit"><br/>
+</form>-->
+
+<div class="box">
+    <div class="one1"></div>
+    <div class="one2"></div>
+    <div class="one3"></div>
+    <div class="one4"></div>
+
+    <div class="two1"></div>
+    <div class="two2"></div>
+    <div class="two3"></div>
+    <div class="two4"></div>
+
+    <div class="box_one1"></div>
+    <div class="box_one2"></div>
+    <div class="box_one3"></div>
+
+</div>
+
+<img src="../../images/login-bg.jpg"><br/>
+<img src="../../images/ssq-s.png"><br/>
+
+<a href="www.baidu.com">百度一下</a><br/>
+<a href="www.baidu.com">百度一下</a><br/>
+<a href="www.baidu.com">百度一下</a><br/>
+<a href="#">Ares战将</a>
+
+</body>
+</html>
