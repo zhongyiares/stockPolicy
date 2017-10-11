@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+
+    <title>Title</title>
+    <style>
+        *{
+            padding:0;
+            margin: 0;
+        }
+        .box{
+            margin: 0 auto;
+        }
+        .box img{
+            width:100%;
+        }
+
+        @media (min-width: 1200px) {
+            .box{
+                width:1200px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<!--<div class="box">
+    <img src="../images/1920.jpg">
+</div>-->
+
+<div class="box">
+    <picture>
+        <source media="(min-width:1200px)" srcset="../images/1920.jpg"/>
+        <source media="(min-width:768px)" srcset="../images/768.jpg"/>
+        <img src="../images/1920.jpg" alt="">
+    </picture>
+</div>
+
+
+</body>
+</html>
