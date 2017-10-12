@@ -1,0 +1,59 @@
+*{padding:0; margin:0;  color:#333; font-family:"微软雅黑"; }
+a{text-decoration: none;  }
+a:hover{color:#FFF}
+img{ border: none}
+ul,ol{list-style: none}
+
+/*  头部区域*/
+.header{
+    width:100%;
+    height: 80px;
+    background: rgba(0,195,202,0.9);
+}
+.hd_con{
+    width:1200px;
+    margin: 0 auto;
+
+}
+.hd_con .logo{
+    float: left;
+    margin-top: 10px;
+    margin-left: 25px;
+}
+.hd_con .list{
+    float: right;
+}
+.hd_con .list li{
+    float: left;
+}
+.hd_con .list a{
+    display: block;
+    padding: 0 25px;
+    line-height: 80px;
+    font-size: 20px;
+    position: relative;
+}
+.hd_con .list li.active a{
+    color: #FFF;
+}
+.hd_con .list li.active a:after{
+    content: "";
+    display: block;
+    width: 5px;
+    height: 5px;
+    background:#FFF;
+    border-radius: 50%;
+    position: absolute;
+    bottom:10px;
+    left: 50%;
+    /*margin-left: 2px;*/
+}
+/*  头部区域 end*/
+
+/*banner 区域*/
+.banner{
+    width: 100%;
+    height: 500px;
+    background: url(images/quxian2.png) no-repeat left center rgba(0,172,217,0.9);
+}
+/*banner 区域end */
