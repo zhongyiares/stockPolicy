@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        @keyframes donghua {
+            0%{
+                transform: translateY(0);
+            }
+
+            100%{
+                transform: translateY(100px);
+            }
+        }
+
+       /* .box{
+            width:100px;
+            height:100px;
+            background: red;
+            border-radius:50% ;
+            !*animation: donghua 3s linear infinite alternate;*!
+            animation: donghua 3s linear forwards;
+        }*/
+
+        .box{
+            width:100px;
+            height:100px;
+            background: red;
+            border-radius:50% ;
+            /*animation: donghua 3s linear infinite alternate;*/
+            animation-name: donghua;
+            animation-duration:3s ;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+
+</div>
+
+</body>
+</html>

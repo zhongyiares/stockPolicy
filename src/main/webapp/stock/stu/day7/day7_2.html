@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        @keyframes dh1 {
+            0%{
+                transform: translate(240px,-300px);
+            }
+            20%{
+                transform: translate(240px,0px);
+            }
+            40%{
+                transform: translate(240px,-100px);
+            }
+            60%{
+
+            }
+            100%{
+
+            }
+        }
+
+        .out{
+            width: 1000px;
+            height:600px;
+            border: 1px solid red;
+            margin: 0 auto ;
+            padding-top:300px;
+        }
+        .out .box img{
+            width: 200px;
+        }
+        .out .box{
+            float: left;
+            margin: 0 20px;
+        }
+        .out .box:nth-child(1){
+            animation: dh1 5s;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="out">
+        <div class="box"><img src="../images/meinv.jpg"></div>
+        <div class="box"><img src="../images/meinv.jpg"></div>
+        <div class="box"><img src="../images/meinv.jpg"></div>
+    </div>
+
+</body>
+</html>
