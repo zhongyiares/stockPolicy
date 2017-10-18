@@ -3,6 +3,16 @@ a{text-decoration: none;  }
 a:hover{color:#FFF}
 img{ border: none}
 ul,ol{list-style: none}
+h1,h2,h3,h4,h5,h6{ font-weight: 100}
+
+/** css 公共部分*/
+
+.s_title{
+    text-align: center;
+    font-size: 28px;
+    padding:80px 0 50px;
+    line-height: 1.6em;
+}
 
 /*  头部区域*/
 .header{
@@ -57,3 +67,107 @@ ul,ol{list-style: none}
     background: url(images/quxian2.png) no-repeat left center rgba(0,172,217,0.9);
 }
 /*banner 区域end */
+
+/**server */
+.server{
+    padding-bottom: 70px;
+}
+
+.server_con{
+    width:1200px;
+    /*border: 1px solid red;*/
+    margin: 0 auto;
+}
+.server_con .box{
+    width:270px;
+    min-height:50px;
+    float: left;
+    margin-right: 40px;
+    text-align: center;
+}
+.server_con .box:last-child{
+    margin-right:0;
+}
+.server_con:after{
+    content: "";
+    display: block ;
+    clear: both;
+
+}
+
+.server_con .box .icon{
+    width:210px;
+    height:210px;
+    border: 1px solid #00abd9;
+    display: block;
+    border-radius: 50%;
+    margin: 0 auto;
+    transition: 0.5s;
+
+    line-height:210px ;
+}
+.server_con .box .icon img{
+    margin-top:60px ;
+    width: 50%;
+}
+
+.server_con .box .icon:hover{
+  background: #00abd9;
+}
+
+.server_con .box h3{
+     padding: 40px 0 20px;
+     font-size: 24px;
+     color: #444;
+ }
+
+.server_con .box p{
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6em;
+}
+
+/**server end*/
+
+/** about*/
+.about{
+    width:100%;
+    height:808px;
+    background: url("images/bg1.jpg") no-repeat center;
+}
+.about_title{
+    color: #fff;;
+}
+.about_con{
+    width:1200px;
+    margin:0 auto;
+    text-align: center;
+}
+.about_con p{
+    color:rgba(255,255,255,0.9);
+    padding:0 140px;
+    font-size: 18px;
+    line-height: 1.8em;
+}
+.about_con .btn{
+    padding-top: 100px;
+}
+.about_con .btn a{
+    width:151px;
+    height:47px;
+    display: inline-block;
+    margin: 0 20px;
+}
+.about_con .btn a:nth-child(1){
+    background: url("images/zxwm.png");
+}
+.about_con .btn a:nth-child(2){
+    background: url("images/ljgd.png");
+}
+/** about end*/
+
+/** footer */
+.footer{
+    height:1000px;
+}
+/** footer end*/
