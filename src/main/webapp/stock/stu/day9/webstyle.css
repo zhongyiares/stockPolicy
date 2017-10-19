@@ -14,6 +14,11 @@ h1,h2,h3,h4,h5,h6{ font-weight: 100}
     line-height: 1.6em;
 }
 
+.s_con{
+    width: 1200px;
+    margin: 0 auto;
+}
+
 /*  头部区域*/
 .header{
     width:100%;
@@ -21,8 +26,6 @@ h1,h2,h3,h4,h5,h6{ font-weight: 100}
     background: rgba(0,195,202,0.9);
 }
 .hd_con{
-    width:1200px;
-    margin: 0 auto;
 
 }
 .hd_con .logo{
@@ -74,9 +77,7 @@ h1,h2,h3,h4,h5,h6{ font-weight: 100}
 }
 
 .server_con{
-    width:1200px;
-    /*border: 1px solid red;*/
-    margin: 0 auto;
+
 }
 .server_con .box{
     width:270px;
@@ -139,8 +140,7 @@ h1,h2,h3,h4,h5,h6{ font-weight: 100}
     color: #fff;;
 }
 .about_con{
-    width:1200px;
-    margin:0 auto;
+
     text-align: center;
 }
 .about_con p{
@@ -172,9 +172,7 @@ h1,h2,h3,h4,h5,h6{ font-weight: 100}
 }
 
 .case_con{
-    width:1200px;
-    min-height: 200px;
-    margin:0 auto;
+
 }
 
 .case_con:after{
@@ -208,8 +206,7 @@ h1,h2,h3,h4,h5,h6{ font-weight: 100}
 }
 
 .client_con{
-    width: 1200px;
-    margin: 0 auto;
+
 }
 .client_con:after{
     content: '';
@@ -235,8 +232,7 @@ h1,h2,h3,h4,h5,h6{ font-weight: 100}
     margin-top:70px;
 }
 .ft{
-    width:1200px;
-    margin: 0 auto;
+
     min-height: 200px;
     padding-bottom: 30px;
 }
