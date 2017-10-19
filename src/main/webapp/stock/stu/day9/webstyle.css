@@ -1,6 +1,6 @@
 *{padding:0; margin:0;  color:#333; font-family:"微软雅黑"; }
 a{text-decoration: none;  }
-a:hover{color:#FFF}
+a:hover{color:#FFF;}
 img{ border: none}
 ul,ol{list-style: none}
 h1,h2,h3,h4,h5,h6{ font-weight: 100}
@@ -231,6 +231,106 @@ h1,h2,h3,h4,h5,h6{ font-weight: 100}
 
 /** footer */
 .footer{
-    height:1000px;
+    background: #f4f4f4;
+    margin-top:70px;
+}
+.ft{
+    width:1200px;
+    margin: 0 auto;
+    min-height: 200px;
+    padding-bottom: 30px;
+}
+.ft:after{
+    content: "";
+    display: block;
+    clear: both;
+    
+}
+.ft_logo{
+    padding: 30px 0;
+}
+.ft .ft_logo img{
+    float: left;
+    background: #0E3460;
+}
+
+.ft .ft_logo:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.ft .ft_logo h1{
+    float: left;
+    color:#666;
+    font-size: 18px;
+    padding-left:10px;
+    padding-top: 15px;
+}
+
+.ft .ft_logo h1 small{
+    font-size: 16px;
+    display: block;
+    letter-spacing: 1px;
+}
+
+.ft_tel{
+    float: left;
+}
+
+.ft_tel h3{
+    font-size: 18px;
+    color: #00abd9;
+    padding-bottom: 15px;
+}
+
+.ft_tel p{
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6em;
+}
+
+.ft_list{
+    float: left;
+    margin-left:150px;
+    width:520px;
+}
+
+.ft_list dl{
+    float: left;
+    width:25%;
+}
+
+.ft_list dt{
+    font-size:18px;
+    color:#666;
+    padding-bottom:15px ;
+}
+
+.ft_list dl a{
+    font-size:12px;
+    color:#666;
+    line-height: 1.6em;;
+}
+
+.ft_list dl a:hover{
+    color: #3399ff;
+}
+
+.ft_weixin{
+    float: right;
+}
+
+.ft_weixin p{
+    font-size:12px;
+    text-align: center;
+}
+
+.copyright{
+    width:100%;
+    text-align: center;
+    background: #000000;
+    color:#fff;
+    line-height:100px;
 }
 /** footer end*/
