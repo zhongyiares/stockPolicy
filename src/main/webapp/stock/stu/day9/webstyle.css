@@ -64,7 +64,7 @@ h1,h2,h3,h4,h5,h6{ font-weight: 100}
 .banner{
     width: 100%;
     height: 500px;
-    background: url(images/quxian2.png) no-repeat left center rgba(0,172,217,0.9);
+    background: url(images/navbg.jpg) no-repeat left center;
 }
 /*banner 区域end */
 
@@ -165,6 +165,69 @@ h1,h2,h3,h4,h5,h6{ font-weight: 100}
     background: url("images/ljgd.png");
 }
 /** about end*/
+
+/** case */
+.case{
+    width:100%;
+}
+
+.case_con{
+    width:1200px;
+    min-height: 200px;
+    margin:0 auto;
+}
+
+.case_con:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.case_con li{
+    float: left;
+    margin-right: 30px;
+    margin-bottom: 30px;
+}
+.case_con li:nth-child(3n){
+    margin-right: 0;
+}
+.case_con li a{
+    display: block;
+}
+.case_con li:hover a{
+    transform: translateY(-7px);
+    transition: 0.3s;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+}
+
+/** case end*/
+
+/**client */
+.client{
+    width: 100%;
+    text-align: center;
+}
+
+.client_con{
+    width: 1200px;
+    margin: 0 auto;
+}
+.client_con:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+.client_con li{
+    float: left;
+    width: 300px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+
+
+/**client end*/
+
+
 
 /** footer */
 .footer{
