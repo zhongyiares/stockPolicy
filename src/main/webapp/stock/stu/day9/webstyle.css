@@ -24,7 +24,11 @@ h1,h2,h3,h4,h5,h6{ font-weight: 100}
     width:100%;
     height: 80px;
     background: rgba(0,195,202,0.9);
+    position: fixed;
+    top:0;
+    left: 0;
 }
+
 .hd_con{
 
 }
@@ -33,6 +37,7 @@ h1,h2,h3,h4,h5,h6{ font-weight: 100}
     margin-top: 10px;
     margin-left: 25px;
 }
+
 .hd_con .list{
     float: right;
 }
@@ -61,6 +66,40 @@ h1,h2,h3,h4,h5,h6{ font-weight: 100}
     left: 50%;
     /*margin-left: 2px;*/
 }
+
+.hd_con .hd_btn{
+    width: 40px;
+    height:40px;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    position: absolute;
+    top:10px;
+    right: 5%;
+    cursor: pointer;
+    display: none;
+}
+.hd_con .hd_btn i{
+    width:24px;
+    height: 3px;
+    background: #888;
+    display: block;
+    position: absolute;
+    top:0;
+    left: 50%;
+    margin-left: -12px;
+
+}
+
+.hd_con .hd_btn i:nth-child(1){
+    top:10px
+}
+.hd_con .hd_btn i:nth-child(2){
+    top:18px
+}
+.hd_con .hd_btn i:nth-child(3){
+    top:26px
+}
+
 /*  头部区域 end*/
 
 /*banner 区域*/
@@ -68,6 +107,9 @@ h1,h2,h3,h4,h5,h6{ font-weight: 100}
     width: 100%;
     height: 500px;
     background: url(images/navbg.jpg) no-repeat left center;
+}
+.banner img{
+    width: 100%;
 }
 /*banner 区域end */
 
@@ -104,9 +146,9 @@ h1,h2,h3,h4,h5,h6{ font-weight: 100}
     border-radius: 50%;
     margin: 0 auto;
     transition: 0.5s;
-
     line-height:210px ;
 }
+
 .server_con .box .icon img{
     margin-top:60px ;
     width: 50%;
@@ -184,6 +226,9 @@ h1,h2,h3,h4,h5,h6{ font-weight: 100}
     float: left;
     margin-right: 30px;
     margin-bottom: 30px;
+}
+.case_con li img{
+    width:100%;
 }
 .case_con li:nth-child(3n){
     margin-right: 0;
@@ -297,6 +342,12 @@ h1,h2,h3,h4,h5,h6{ font-weight: 100}
     width:25%;
 }
 
+.ft_list:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
 .ft_list dt{
     font-size:18px;
     color:#666;
@@ -330,3 +381,109 @@ h1,h2,h3,h4,h5,h6{ font-weight: 100}
     line-height:100px;
 }
 /** footer end*/
+
+@media (max-width: 1199px) {
+    .s_con{
+        width: 990px;
+    }
+    .server_con .box{
+        width:225px;
+        margin-right: 30px;
+    }
+    .server_con .box .icon{
+        width:180px;
+        height:180px;
+        line-height:180px ;
+    }
+    .about_con p{
+        padding:0 100px;
+    }
+    .case_con li{
+        width:312px;
+        margin-right: 25px;
+        margin-bottom: 25px;
+    }
+    .client_con li{
+        width: 220px;
+        padding: 20px;
+    }
+    .ft_list{
+        margin-left:100px;
+        width:500px;
+    }
+}
+@media (max-width: 991px) {
+    .s_con{
+        width: 100%;
+    }
+    .banner{
+        width: 100%;
+        background: url(images/navbg766.jpg) no-repeat left center;
+    }
+    .server_con .box{
+        width:22%;
+        margin: 0 1.5%;
+    }
+    .server_con .box .icon{
+        width:120px;
+        height:120px;
+        line-height:120px ;
+    }
+    .server_con .box .icon img{
+        margin-top:40px ;
+        width: 40%;
+    }
+    .about_con p{
+        padding:0 50px;
+        font-size:16px ;
+    }
+    .about h2{
+        font-size:19px ;
+    }
+    .case_con li{
+        width:30%;
+    }
+    .client_con li{
+        width: 22%;
+    }
+    .ft{
+        padding: 0 5%;
+        padding-bottom: 30px;
+        box-sizing: border-box;
+    }
+    .ft_tel{
+        float: none;
+    }
+    .ft_list{
+        margin-left:0px;
+        margin:30px 0;
+        width:100%;
+        float: none;
+    }
+    .ft_weixin{
+        float: none;
+    }
+    .ft_weixin p{
+        text-align: left;
+    }
+
+}
+
+@media (max-width: 767px) {
+    .hd_con .hd_btn{
+        display: block;
+    }
+    .hd_con .list{
+        float: right;
+    }
+    .hd_con .list li{
+        float: left;
+    }
+    .hd_con .list a{
+        display: block;
+        padding: 0 25px;
+        line-height: 80px;
+        font-size: 20px;
+        position: relative;
+    }
+}
