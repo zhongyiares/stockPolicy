@@ -159,4 +159,19 @@
 </footer>
 
 </body>
+<script src="../../../static/jquery/jquery-1.8.3.js"></script>
+<script>
+    $(function () {
+        $(".hd_btn").click(function () {
+           $(".hd_con .list").slideToggle();
+        });
+
+        $(window).resize(function () {
+            if( $(this).width() > 767 ){
+                $(".hd_con .list").show();
+            }
+
+        })
+    })
+</script>
 </html>

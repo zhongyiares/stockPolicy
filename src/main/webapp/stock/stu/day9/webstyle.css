@@ -474,16 +474,38 @@ h1,h2,h3,h4,h5,h6{ font-weight: 100}
         display: block;
     }
     .hd_con .list{
-        float: right;
+        position: absolute;
+        top:60px;
+        left:0;
+        width: 100%;
+        background: rgba(255,255,255,0.9);
+        border-top:1px solid #eee;
+        display: none;
     }
     .hd_con .list li{
-        float: left;
+        float: none;
+        border-bottom: 1px solid #eee;
     }
     .hd_con .list a{
-        display: block;
-        padding: 0 25px;
-        line-height: 80px;
-        font-size: 20px;
-        position: relative;
+        text-align: center;
+    }
+    .banner{
+        background: url(images/navbg400.jpg) no-repeat left center;
+    }
+    .server_con .box{
+        width:50%;
+        margin: 0;
+        padding: 1.5%;
+        margin-bottom:1.5%;
+        box-sizing: border-box;
+    }
+    .case_con li{
+        width:100%;
+        padding: 1.5%;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    .client_con li{
+        width: 50%;
     }
 }
