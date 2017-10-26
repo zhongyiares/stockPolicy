@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <title>模态框插件</title>
+    <link rel="stylesheet" href="../../../../static/bootstrap/3.7/css/bootstrap.css">
+</head>
+<body  style="margin: 50px;">
+
+<div class="modal fade" id="myModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal"><span>&times;</span></button>
+                <h4 class="modal-title">会员登录</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-4">1</div>
+                        <div class="col-md-4">2</div>
+                        <div class="col-md-4">3</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default">注册</button>
+                <button class="btn btn-primary">登录</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<button class="btn btn-primary btn-lg" data-toggle="modal"
+        data-target="#myModal">点击弹窗</button>-->
+
+<button class="btn btn-primary btn-lg" id="btn">点击弹窗</button>
+
+
+
+</body>
+<script src="../../../../static/jquery/jquery-1.9.1.js"></script>
+<script src="../../../../static/bootstrap/3.7/js/bootstrap.min.js"></script>
+<script>
+    $("#btn").click(function () {
+        $("#myModal").modal("show");
+    });
+
+    $("#myModal").modal({
+        show:false,
+//        remote:"day3_5.html"
+    });
+
+    $("#myModal").on('show.bs.modal',function () {
+        alert("1");
+    });
+
+    $("#myModal").on('shown.bs.modal',function () {
+        alert("2");
+    });
+
+    $("#myModal").on('hide.bs.modal',function () {
+        alert("3");
+    });
+
+    $("#myModal").on('hidden.bs.modal',function () {
+        alert("4");
+    });
+
+    $("#myModal").on('loaded.bs.modal',function () {
+        alert("5");
+    });
+
+</script>
+</html>

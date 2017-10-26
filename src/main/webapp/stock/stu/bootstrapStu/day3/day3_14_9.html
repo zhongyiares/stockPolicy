@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <title>下拉菜单和滚动监听插件</title>
+    <link rel="stylesheet" href="../../../../static/bootstrap/3.7/css/bootstrap.css">
+</head>
+<body  >
+
+<nav class="navbar navbar-default" id="nav2">
+    <a href="#" class="navbar-brand">Web开发</a>
+    <ul class="nav navbar-nav">
+        <li><a href="#sy">首页</a></li>
+        <li><a href="#zx">咨询</a></li>
+        <li class="dropdown">
+            <a href="#" data-toggle="dropdown">产品<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="#zx2">咨询2</a></li>
+                <li><a href="#cp">产品</a></li>
+                <li><a href="#">关于</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+<div id="content" data-target="#nav2" data-offset="0" data-spy="scroll" style="padding: 0 10px; height: 200px;overflow: auto;position: relative">
+    <div class="sec">
+        <h4 id="sy">首页<a href="#" onclick="removeSec(this)">删除</a></h4>
+        <p>
+            通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。
+            通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。 通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。 通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。 通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。 通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。 通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。
+        </p>
+    </div>
+
+    <div class="sec">
+        <h4 id="zx">咨询</h4>
+        <p>
+            通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。。
+        </p>
+    </div>
+
+    <div class="sec">
+        <h4 id="zx2">产品</h4>
+        <p>
+            通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们
+        </p>
+    </div>
+
+    <div class="sec">
+        <h4 id="cp">Html5</h4>
+        <p>
+            通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们的 HTML 编辑器，您能够编辑 HTML，然后点击按钮来查看结果。通过我们
+        </p>
+    </div>
+
+
+</div>
+
+</body>
+<script src="../../../../static/jquery/jquery-1.9.1.js"></script>
+<script src="../../../../static/bootstrap/3.7/js/bootstrap.min.js"></script>
+<script>
+
+//    $("#btn")
+//      $("#btn").dropdown("toggle");
+//    $("#dropdown").on('show.bs.dropdown',function () {
+//        alert("1");
+//    });
+
+    function removeSec(e) {
+        $(e).parents('.sec').remove();
+//        $("#content").scrollspy('refresh');
+    }
+
+</script>
+</html>

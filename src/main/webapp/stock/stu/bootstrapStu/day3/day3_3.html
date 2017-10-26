@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <title>列表和嵌入式组件</title>
+    <link rel="stylesheet" href="../../../../static/bootstrap/3.7/css/bootstrap.css">
+</head>
+<body  style="margin: 50px;">
+
+<ul class="list-group">
+    <li class="list-group-item">1.这是首页</li>
+    <li class="list-group-item">2.这是第二页<span class="badge">10</span></li>
+    <li class="list-group-item">3.这是第三页</li>
+    <li class="list-group-item">4.这是第四页</li>
+</ul>
+
+
+<div class="list-group">
+    <a href="#" class="list-group-item">1.这是首页</a>
+    <a href="#" class="list-group-item active">2.这是第二页<span class="badge">10</span></a>
+    <a href="#" class="list-group-item">3.这是第三页</a>
+    <a href="#" class="list-group-item">4.这是第四页</a>
+</div>
+
+
+
+<div class="list-group">
+    <button href="#" class="list-group-item">1.这是首页</button>
+    <button href="#" class="list-group-item active">2.这是第二页<span class="badge">10</span></button>
+    <button href="#" class="list-group-item disabled">3.这是第三页</button>
+    <button href="#" class="list-group-item list-group-item-success">4.这是第四页</button>
+</div>
+
+<div class="list-group">
+    <a href="#" class="list-group-item">
+        <h4>列表标题</h4>
+        <p>详细内容....</p>
+    </a>
+    <a href="#" class="list-group-item active">2.这是第二页<span class="badge">10</span></a>
+    <a href="#" class="list-group-item">3.这是第三页</a>
+    <a href="#" class="list-group-item">4.这是第四页</a>
+</div>
+
+
+</body>
+<script src="../../../../static/jquery/jquery-1.9.1.js"></script>
+<script src="../../../../static/bootstrap/3.7/js/bootstrap.min.js"></script>
+</html>
