@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <title>弹出框插件</title>
+    <link rel="stylesheet" href="../../../../static/bootstrap/3.7/css/bootstrap.css">
+    <style>
+        .view{
+            width: 300px;
+            height: 100px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body style="">
+
+
+<!--<div class="view">-->
+    <!--<button class="btn btn-danger btn-lg"-->
+             <!--data-toggle="popover"-->
+             <!--title="Bootstrap"-->
+             <!--data-content="发动反击哦打飞机都放假哦地方啊哦佛的飞机"-->
+             <!--data-placement="right"-->
+    <!--&gt;-->
+        <!--&gt;点击弹出/隐藏弹出框-->
+    <!--</button>-->
+<!--</div>-->
+
+
+<div id="alert" class="alert alert-warning fade in">
+    <button class="close">
+        <span>&times;</span>
+    </button>
+    <p>警告: 你的浏览器不支持</p>
+</div>
+
+
+</body>
+<script src="../../../../static/jquery/jquery-1.9.1.js"></script>
+<script src="../../../../static/bootstrap/3.7/js/bootstrap.min.js"></script>
+<script>
+
+//    $('button').popover({
+//        viewport:'#view',
+//        padding : 10
+//    });
+//    $("#btn").on('click',function () {
+//        $('#b').popover('show');
+//    });
+    
+    $('.close').on('click',function () {
+        $('#alert').alert('close');
+    });
+
+</script>
+</html>
