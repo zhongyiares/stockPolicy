@@ -8,6 +8,7 @@
     <style>
         body {
             font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei UI", "Microsoft YaHei", SimHei, "\5B8B\4F53", simsun, sans-serif;
+            color: #666;
         }
         .myCarousel{
             margin:50px 0 0 0;
@@ -45,6 +46,36 @@
         .tab1 .col{
             padding:20px;
         }
+        .tab2{
+            background: #eee;
+            padding:60px 20px;
+            text-align: center;
+        }
+        .tab2 img{
+            width:40%;
+            height:40%;
+        }
+        .tab3{
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .tab3 img{
+            width:65%;
+            height:65%;
+        }
+        .text h3{
+            font-size:20px;
+        }
+        .text p{
+            font-size:14px;
+        }
+
+        #footer{
+            background: #eee;
+            border-top:1px solid #ccc ;
+            padding: 20px;
+            text-align: center;
+        }
 
         /*没有小于768px，是因为Bootstrap3以移动端优先设计*/
 
@@ -56,6 +87,18 @@
             .tab-p {
                 font-size: 16px;
             }
+            .text h3{
+                font-size:22px;
+            }
+            .text p{
+                font-size:15px;
+            }
+            .tab2-text{
+                float: left;
+            }
+            .tab2-img{
+                float: right;
+            }
         }
 
         /* 中等屏幕（桌面显示器，大于等于992px） */
@@ -66,6 +109,12 @@
             .tab-p {
                 font-size: 17px;
             }
+            .text h3{
+                font-size:24px;
+            }
+            .text p{
+                font-size:16px;
+            }
         }
 
         /* 大屏幕（大桌面显示器，大于等于1200px） */
@@ -75,6 +124,12 @@
             }
             .tab-p {
                 font-size: 18px;
+            }
+            .text h3{
+                font-size:26px;
+            }
+            .text p{
+                font-size:18px;
             }
         }
 
@@ -180,6 +235,41 @@
         </div>
     </div>
 
+    <div class="tab2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 tab2-img">
+                    <img src="img/tab2.png" alt="" class="auto img-responsive center-block">
+                </div>
+                <div class="text col-md-6 col-sm-6 tab2-text">
+                    <h3>强大的学习体系</h3>
+                    <p>经过管理学大师层层把关、让您的企业突飞猛进。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <img src="img/tab3.png" alt="" class="auto img-responsive center-block">
+                </div>
+                <div class="text col-md-6 col-sm-6">
+                    <h3>完美的管理方式</h3>
+                    <p>最新的管理培训方案，让您的企业赶超同行。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <div class="container">
+            <p>企业培训 | 合作事宜 | 版权投诉</p>
+            <p>苏ICP 备12345678. © 2009-2016 瓢城企训网. Powered by Bootstrap.</p>
+        </div>
+    </footer>
+
 
 </body>
 <script src="../../../../static/jquery/jquery-1.9.1.js"></script>
@@ -199,6 +289,17 @@ $(function () {
 //                        $('.carousel-inner img').eq(2).height();
 //        $('.carousel-control').css('line-height',heightVal + 'px');
 //    })
+
+    //设置文字垂直居中
+    $('.text').eq(0).css('margin-top', ($('.auto').eq(0).height() - $('.text').eq(0).height()) / 2 + 'px');
+    $(window).resize(function () {
+        $('.text').eq(0).css('margin-top', ($('.auto').eq(0).height() - $('.text').eq(0).height()) / 2 + 'px');
+    });
+
+    $('.text').eq(1).css('margin-top', ($('.auto').eq(1).height() - $('.text').eq(1).height()) / 2 + 'px');
+    $(window).resize(function () {
+        $('.text').eq(1).css('margin-top', ($('.auto').eq(1).height() - $('.text').eq(1).height()) / 2 + 'px');
+    });
 
 })
     
