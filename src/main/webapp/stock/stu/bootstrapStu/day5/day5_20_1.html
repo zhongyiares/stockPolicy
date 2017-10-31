@@ -6,6 +6,9 @@
     <title>项目实战</title>
     <link rel="stylesheet" href="../../../../static/bootstrap/3.7/css/bootstrap.css">
     <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei UI", "Microsoft YaHei", SimHei, "\5B8B\4F53", simsun, sans-serif;
+        }
         .myCarousel{
             margin:50px 0 0 0;
         }
@@ -15,9 +18,66 @@
         .carousel-inner img{
             margin: 0 auto;
         }
-        .carousel-control{
-            font-size: 100px;
+        .tab-h2{
+            font-size: 20px;
+            text-align: center;
+            letter-spacing: 1px;
+            color: #0059b2;
         }
+        .tab-p{
+            font-size: 15px;
+            text-align: center;
+            letter-spacing: 1px;
+            color: #999;
+            margin: 20px 0 40px 0;
+        }
+        .tab1{
+            margin: 30px 0;
+            color: #666;
+        }
+        .tab1 .text-muted{
+            color: #999;
+            text-decoration: line-through;
+        }
+        .tab1 .media-heading{
+            margin:5px 0 20px 0 ;
+        }
+        .tab1 .col{
+            padding:20px;
+        }
+
+        /*没有小于768px，是因为Bootstrap3以移动端优先设计*/
+
+        /* 小屏幕（平板，大于等于768px） */
+        @media (min-width: 768px) {
+            .tab-h2 {
+                font-size: 26px;
+            }
+            .tab-p {
+                font-size: 16px;
+            }
+        }
+
+        /* 中等屏幕（桌面显示器，大于等于992px） */
+        @media (min-width: 992px) {
+            .tab-h2 {
+                font-size: 28px;
+            }
+            .tab-p {
+                font-size: 17px;
+            }
+        }
+
+        /* 大屏幕（大桌面显示器，大于等于1200px） */
+        @media (min-width: 1200px) {
+            .tab-h2 {
+                font-size: 30px;
+            }
+            .tab-p {
+                font-size: 18px;
+            }
+        }
+
     </style>
 </head>
 
@@ -62,8 +122,62 @@
                 <img src="img/slide3.png" alt="第三张">
             </div>
         </div>
-        <a href="#myCarousel" data-slide="prev" class="carousel-control left">&lsaquo;</a>
-        <a href="#myCarousel" data-slide="next" class="carousel-control right">&rsaquo;</a>
+        <a href="#myCarousel" data-slide="prev" class="carousel-control left">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a href="#myCarousel" data-slide="next" class="carousel-control right">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+
+
+    <div class="tab1">
+        <div class="container">
+            <h2 class="tab-h2">「为什么选择瓢城企业培训」</h2>
+            <p class="tab-p">强大的师资力量，完美的实战型管理课程，让您的企业实现质的腾飞！</p>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col">
+               <div class="media-left">
+                    <a href="#"><img src="img/tab1-1.png" alt="" class="media-object"></a>
+               </div>
+                <div class="media-body">
+                    <h4 class="media-heading">课程内容</h4>
+                    <p class="text-muted">其他：高校不知名的讲师编写，没有任何实战价值的教材！</p>
+                    <p>我们：知名企业家、管理学大师联合编写的具有实现性教材！</p>
+                </div>
+            </div>
+            <div class="col-md-6 col">
+                <div class="media-left">
+                    <a href="#"><img src="img/tab1-2.png" alt="" class="media-object"></a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">师资力量</h4>
+                    <p class="text-muted">其他：非欧美正牌大学毕业的、业界没有知名度的讲师！</p>
+                    <p>我们：美国哈佛、耶鲁等世界一流高校、享有声誉的名牌专家！</p>
+                </div>
+            </div>
+            <div class="col-md-6 col">
+                <div class="media-left">
+                    <a href="#"><img src="img/tab1-3.png" alt="" class="media-object"></a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">课时安排</h4>
+                    <p class="text-muted">其他：无法保证上课效率、没有时间表，任务无法完成！</p>
+                    <p>我们：保证按时间表的上课、效率高、当天的任务当天完成！</p>
+                </div>
+            </div>
+            <div class="col-md-6 col">
+                <div class="media-left">
+                    <a href="#"><img src="img/tab1-4.png" alt="" class="media-object"></a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">服务团队</h4>
+                    <p class="text-muted">其他：社会招聘的、服务水平参差不齐的普通员工！</p>
+                    <p>我们：内部培养、经受过良好高端服务培训的高标准员工！</p>
+                </div>
+            </div>
+        </div>
     </div>
 
 
@@ -78,13 +192,13 @@ $(function () {
        interval : 3000
     });
     //垂直居中
-    $('.carousel-control').css('line-height',$('.carousel-inner img').height() + 'px');
-    $(window).resize(function () {
-        var heightVal = $('.carousel-inner img').eq(0).height() ||
-                        $('.carousel-inner img').eq(1).height() ||
-                        $('.carousel-inner img').eq(2).height();
-        $('.carousel-control').css('line-height',heightVal + 'px');
-    })
+//    $('.carousel-control').css('line-height',$('.carousel-inner img').height() + 'px');
+//    $(window).resize(function () {
+//        var heightVal = $('.carousel-inner img').eq(0).height() ||
+//                        $('.carousel-inner img').eq(1).height() ||
+//                        $('.carousel-inner img').eq(2).height();
+//        $('.carousel-control').css('line-height',heightVal + 'px');
+//    })
 
 })
     
