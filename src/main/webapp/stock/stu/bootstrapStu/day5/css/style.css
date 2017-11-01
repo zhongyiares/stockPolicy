@@ -101,6 +101,26 @@ body {
     line-height: 1.6em;
 }
 
+.info-right{
+    background: #fff;
+    box-shadow: 2px 2px 3px #ccc;
+}
+.info-right blockquote{
+    margin: 0;
+    padding: 0;
+}
+.info-right h2{
+    font-size:20px;
+    color: #333;
+    padding:5px;
+}
+.info-right h4{
+    color: #333;
+    font-size:16px;
+    padding: 2px 0 0 0;
+    line-height: 1.6em;
+}
+
 #footer{
     background: #666;
     border-top:1px solid #ccc ;
@@ -142,6 +162,9 @@ body {
     }
     .info-content h4{
         font-size:16px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 }
 
