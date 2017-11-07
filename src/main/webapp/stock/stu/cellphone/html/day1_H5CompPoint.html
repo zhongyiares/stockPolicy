@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/H5CompBase.css">
+    <link rel="stylesheet" href="../css/H5CompPoint.css">
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background: #000;
+            font-size: 12px;
+        }
+        .iphone{
+            width: 340px;
+            height: 540px;
+            background-color: #fff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -270px 0 0 -170px;
+        }
+        /*.h5_component_base{
+            transition: all 1s;
+        }
+        .h5_component_base_leave{
+            opacity: 0;
+        }
+        .h5_component_base_load{
+            opacity: 1;
+        }*/
+    </style>
+
+
+
+</head>
+<body>
+
+    <div class="iphone">
+
+    </div>
+
+
+</body>
+<script src="../../../../static/jquery/jquery-1.9.1.js"></script>
+<!--<script src="../js/jquery.js"></script>-->
+<script src="../js/jquery-ui.min.js"></script>
+<script src="../js/jquery.fullPage.js"></script>
+<script src="../js/H5CompBase.js"></script>
+<script src="../js/H5CompPoint.js"></script>
+<script>
+
+    var cfg = {
+        type:'point',
+//        text :'text55',
+        data :[
+            ['A项',.4,'green'],
+            ['B项',.2,'red',0,'-60%'],
+            ['C项',.2,'yellow',0,'120%']
+        ],
+        width:300,
+        height : 300,
+        css :{
+            bottom : 0,
+            opacity : 1,
+        },
+        animateIn :{
+            bottom : '40%',
+            opacity : 1
+        },
+        animateOut :{
+            bottom : 0,
+            opacity : 0,
+
+        },
+        center : true
+    };
+
+    var h5 = new H5ComponentPoint('myName',cfg);
+    $('.iphone').append(h5);
+
+    var leave = true;
+    $('body').click(function () {
+        leave = ! leave;
+        $('.h5_component').trigger(leave ? 'onLeave' : 'onLoad');
+    });
+
+</script>
+</html>
