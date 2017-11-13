@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/H5CompBase.css">
+    <link rel="stylesheet" href="../css/H5CompRadar.css">
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background: #000;
+            font-size: 12px;
+        }
+        .iphone{
+            width: 340px;
+            height: 540px;
+            background-color: #fff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -270px 0 0 -170px;
+        }
+
+    </style>
+
+
+
+</head>
+<body>
+
+    <div class="iphone">
+
+    </div>
+
+
+</body>
+<script src="../../../../static/jquery/jquery-1.9.1.js"></script>
+<!--<script src="../js/jquery.js"></script>-->
+<script src="../js/jquery-ui.min.js"></script>
+<script src="../js/jquery.fullPage.js"></script>
+<script src="../js/H5CompBase.js"></script>
+<script src="../js/H5CompRadar.js"></script>
+<script>
+
+    var cfg = {
+        type:'radar',
+//        text :'text55',
+        data :[
+            ['Js',.9,'green'],
+            ['Html',.7,'red'],
+            ['css3',.8,'yellow'],
+            ['Html5',.6,'yellow'],
+            ['jQ',.9,'yellow'],
+            ['Bs',.5,'yellow'],
+            ['AJs',.4,'yellow']
+        ],
+        width:400,
+        height : 400,
+        css :{
+          top : 100,
+            opacity:0,
+        },
+        animateIn :{
+            opacity:1,
+            top : 200,
+        },
+        animateOut :{
+            opacity:0,
+            top : 100,
+        },
+        center : true
+    };
+
+    var h5 = new H5ComponentRadar('myName',cfg);
+    $('.iphone').append(h5);
+
+    var leave = true;
+    $('body').click(function () {
+        leave = ! leave;
+        $('.h5_component').trigger(leave ? 'onLeave' : 'onLoad');
+    });
+
+</script>
+</html>
