@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        .active{
+            background: blue;
+        }
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<body>
+
+<input class="active" type="button" value="1">
+<input type="button" value="2">
+<input type="button" value="3">
+</body>
+<script>
+
+$("input").click(function () {
+    $(this).addClass("active").siblings().removeClass("active")
+})
+</script>
+</html>

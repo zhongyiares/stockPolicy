@@ -17,20 +17,23 @@
     <script src="../js/jquery-1.11.1.js"></script>
 </head>
 <body>
-    <input id="btn1" type="button" value="点击">
-    <div id="div1" class="box1 ">
-
-    </div>
-
+    <div>div</div>
+<p>p</p>
+<span>span</span>
+    <p>p</p>
+<h1>h1</h1>
+<h2>h2</h2>
+    <h2>h2</h2>
+    <em>em</em>
 </body>
 <script>
 
-    $('#div1').click(function () {
-       $(this).toggleClass("box2")
-    });
+//    $('p').next().css('background',"red"):
+//$('p').prev().css('background',"red");
 
-    $('#btn1').click(function () {
-       $('.box1').toggle();
-    });
+//$('p').next("h1").css('background',"red");
+//$('span').nextAll().css('background',"red");
+
+$('span').siblings("h2").css('background',"red");
 </script>
 </html>
