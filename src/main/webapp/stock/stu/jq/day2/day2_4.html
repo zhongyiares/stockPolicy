@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        .active{
+            background: blue;
+        }
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<body >
+
+<ul>
+    <li>111
+        <p>
+            <span>span1</span>
+        </p>
+    </li>
+    <li>222<span>span1</span></li>
+    <li>333<span>span1</span></li>
+    <li>444<span>span1</span></li>
+    <li>555<span>span1</span></li>
+    <li>666<span>span1</span></li>
+</ul>
+
+</body>
+<script>
+
+    var aa = $('<li id="abc">hello3</li>')
+
+//    $('ul').append(aa);
+
+//    $('ul').prepend(aa);
+
+//    $('ul').before(aa);
+
+//    $('ul').after(aa);
+
+//    $('ul').prepend(aa);
+
+    aa.appendTo($('ul'))
+
+
+
+</script>
+
+</html>

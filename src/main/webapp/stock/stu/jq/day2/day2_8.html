@@ -1,0 +1,45 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        .active{
+            background: blue;
+        }
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<body >
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+
+</body>
+<script>
+
+    $(function () {
+//        $('li').html("hello")
+
+        $('li').each(function (i,item) {
+//            $(item).html(i)
+//            $(this).html(i)
+            if( i == 2){
+                return false;
+            }
+            $(this).html(i)
+        })
+    })
+
+
+</script>
+
+</html>

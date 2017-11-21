@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+    <script src="../js/jquery-1.11.1.js"></script>
+<script>
+$(function(){
+
+	$('input[value=上移]').click(function(){
+		
+		var $nowLi = $(this).closest('li');
+		var $prevLi = $nowLi.prev();
+		
+		if($prevLi.length == 0){
+			alert('到头了');
+		}
+		else{
+			$nowLi.insertBefore( $prevLi );
+		}
+		
+	});
+	
+	$('input[value=下移]').click(function(){
+		
+		var $nowLi = $(this).closest('li');
+		var $nextLi = $nowLi.next();
+		
+		if($nextLi.length == 0){
+			alert('到尾了');
+		}
+		else{
+			$nowLi.insertAfter( $nextLi );
+		}
+		
+	});
+	
+});
+</script>
+</head>
+
+<body>
+<ul>
+	<li>1.<input type="button" value="上移" /><input type="button" value="下移" /></li>
+    <li>2.<input type="button" value="上移" /><input type="button" value="下移" /></li>
+    <li>3.<input type="button" value="上移" /><input type="button" value="下移" /></li>
+    <li>4.<input type="button" value="上移" /><input type="button" value="下移" /></li>
+    <li>5.<input type="button" value="上移" /><input type="button" value="下移" /></li>
+</ul>
+</body>
+</html>

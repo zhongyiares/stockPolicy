@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+#div1 div{ width:200px; height:200px; border:1px #000 solid; display:none;}
+.active{ background:red;}
+</style>
+<script src="../js/jquery-1.11.1.js"></script>
+<script>
+
+
+$(function(){
+	
+//	$('#div1').find('input').click(function(){
+//
+//		$('#div1').find('input').attr('class','');
+//		$('#div1').find('div').css('display','none');
+//
+//		$(this).attr('class','active');
+//
+//		$('#div1').find('div').eq( $(this).index() ).css('display','block');
+//
+//	});
+
+    $('#div1').find('input').click(function () {
+
+        $(this).attr("class","active").siblings('input').attr('class','');
+
+        $('#div1').find('div').eq( $(this).index('input')).show().siblings('div').hide();
+    })
+	
+});
+
+
+</script>
+</head>
+
+<body>
+<div id="div1">
+
+    <div style="display:block">111</div>
+    <div>222</div>
+    <div>333</div>
+    <input class="active" type="button" value="1" />
+    <input type="button" value="2" />
+    <input type="button" value="3" />
+</div>
+
+</body>
+</html>

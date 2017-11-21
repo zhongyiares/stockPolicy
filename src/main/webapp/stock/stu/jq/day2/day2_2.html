@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        .active{
+            background: blue;
+        }
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<body class="box">
+
+<div id="div1" class="box">
+    div1
+    <div id="div2" class="box">
+        div2
+    </div>
+</div>
+
+</body>
+<script>
+
+    $('#div2').closest('.box').css('background','red');
+
+
+</script>
+</html>
