@@ -1,0 +1,47 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<body >
+
+<input type="button" value="click">
+<div id="div1">div</div>
+
+</body>
+<script>
+
+//function show(a,b) {
+//    alert(a);
+//    alert(b)
+//    alert(this)
+//}
+
+//$.proxy(show,document)(3,6,'f');
+
+//    $(document).on('click',$.proxy(function (a,b) {
+//        alert(a);
+//        alert(b)
+//        alert(this)
+//    },window,3,5,77))
+
+
+$(document).on('click',function () {
+    var This = this;
+    setTimeout(function () {
+        alert(This)
+    },1000)
+})
+
+</script>
+
+</html>

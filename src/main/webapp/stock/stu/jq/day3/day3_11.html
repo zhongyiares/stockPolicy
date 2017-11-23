@@ -1,0 +1,55 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<body >
+
+<input type="button" value="click">
+<div id="div1">div</div>
+
+</body>
+<script>
+
+//   $.extend();
+
+  /*  var a = {
+        name:"hello"
+    };
+    var c = {
+        age : 20
+    }
+    var b = {};
+
+    $.extend(b,a,c);
+    console.log(b.name)
+b.name = "33"
+console.log(b.name)
+console.log(a.name)
+console.log(b.age)*/
+
+  var a = {
+    name:{age:20}
+};
+
+var b = {};
+$.extend(true,b,a);
+    console.log( b.name.age)
+b.name.age=78;
+console.log( b.name.age)
+console.log( a.name.age)
+
+
+
+</script>
+
+</html>

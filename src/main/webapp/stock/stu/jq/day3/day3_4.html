@@ -1,0 +1,91 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        *{
+            padding: 0;
+            margin:0;
+        }
+
+       #div1{
+           width:200px;
+           height:200px;
+           margin: 100px;
+           background: red;
+           position: relative;
+       }
+        #div2{
+            width:100px;
+            height:100px;
+            background: yellow;
+            margin: 50px ;
+        }
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<body >
+
+<div  id="div1" class="box">
+    <!--<div id="div2">-->
+        <!--内容-->
+    <!--</div>-->
+</div>
+
+</body>
+<script>
+
+//    $('#div2').on('click',function () {
+//        alert("2");
+//    })
+
+
+//    $('#div2').on({'mouseover':function () {
+//        alert(1)
+//
+//    },'click':function () {
+//        alert(2)
+//        $(this).off()
+//    }})
+
+//    $('#div1').on('click mouseover',function () {
+//        alert(2);
+//        $(this).off('mouseover')
+//    })
+
+//    $('#div1').click(function (e) {
+//        console.log( e.pageX)
+//        console.log( e.pageY)
+//        
+//    })
+//
+//    $(document).on('click',function (e) {
+////        console.log( e.which)
+//
+//        console.log( e.target)
+//    })
+
+    $(document).on('click',function (e) {
+//        console.log( e.which)
+
+        console.log( e.target)
+    })
+
+
+$("#div1").on('click',function (e) {
+    e.stopPropagation();
+    alert(1)
+})
+
+    $(document).on('contextmenu',function (e) {
+//        e.preventDefault();
+        return false;
+    })
+    
+</script>
+
+</html>

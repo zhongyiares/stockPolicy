@@ -1,0 +1,47 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<body >
+<input type="text">
+<input type="button" value="点击">
+
+<ul>
+    <li>11</li>
+    <li>11</li>
+    <li>11</li>
+    <li>11</li>
+    <li>11</li>
+</ul>
+
+</body>
+<script>
+
+    $('input').eq(1).on('click',function () {
+        var $li = $('<li>'+$('input').eq(0).val()+"</li>");
+        $('ul').append($li);
+    });
+    $('input').eq(0).on('keydown',function (e) {
+        if(e.which == 13){
+//            var $li = $('<li>'+$('input').eq(0).val()+"</li>");
+//            $('ul').append($li);
+            $('input').eq(1).trigger('click')
+
+        }
+    })
+    
+
+
+</script>
+
+</html>

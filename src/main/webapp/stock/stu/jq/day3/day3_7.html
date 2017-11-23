@@ -1,0 +1,45 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<body >
+
+<input type="button" value="点击">
+
+<ul>
+    <li>11</li>
+    <li>11</li>
+    <li>11</li>
+    <li>11</li>
+    <li>11</li>
+</ul>
+
+</body>
+<script>
+
+    $("ul").delegate('li','click',function (e) {
+        $(this).css('background','red');
+        $(e.delegateTarget).css('background','yellow');
+        $(e.delegateTarget).undelegate()
+
+    });
+
+    $('input').click(function () {
+        var $li = $('<li>222</li>')
+        $('ul').append($li);
+    })
+
+
+</script>
+
+</html>

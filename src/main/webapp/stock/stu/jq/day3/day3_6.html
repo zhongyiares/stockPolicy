@@ -1,0 +1,59 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        *{
+            padding: 0;
+            margin:0;
+        }
+
+       #div1{
+           width:200px;
+           height:200px;
+           /*margin: 100px;*/
+           background: red;
+           position: relative;
+       }
+        #div2{
+            width:100px;
+            height:100px;
+            background: yellow;
+            margin: 50px ;
+        }
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<body >
+
+<div  id="div1" class="box">
+   aa
+</div>
+
+</body>
+<script>
+
+    var disX = 0;
+    var disY = 0;
+    $('#div1').on('mousedown',function (e) {
+        disX = e.pageX - $(this).offset().left;
+        disY = e.pageY - $(this).offset().top;
+        
+        $(document).on('mousemove',function (e) {
+            $('#div1').css('left',e.pageX - disX);
+            $('#div1').css('top',e.pageY - disY);
+        })
+        $(document).on('mouseup',function (e) {
+            $(this).off('mousemove');
+            $(this).off('mouseup');
+        })
+        return false;
+    })
+
+</script>
+
+</html>

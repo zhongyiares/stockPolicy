@@ -1,0 +1,64 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        *{
+            padding: 0;
+            margin:0;
+        }
+
+       #div1{
+           width:200px;
+           height:200px;
+           margin: 100px;
+           background: red;
+           position: relative;
+       }
+        #div2{
+            width:100px;
+            height:100px;
+            background: yellow;
+            margin: 50px ;
+        }
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<body >
+
+<div  id="div1" class="box">
+   aa
+</div>
+
+<span>sapn</span>
+
+</body>
+<script>
+//$('span').click(function () {
+//    alert(1)
+//})
+//$('span').click(function () {
+//    alert(1)
+//})
+//$('span').click(function () {
+//    alert(1)
+//})
+
+//clearInterval(timer);
+//var timer = setInterval(function () {
+//
+//},100);
+
+    $('div').click(function () {
+        $('span').off().click(function () {
+            alert(1)
+        })
+    })
+
+</script>
+
+</html>

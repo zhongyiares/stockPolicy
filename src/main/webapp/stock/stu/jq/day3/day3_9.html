@@ -1,0 +1,39 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<body >
+
+<input type="button" value="click">
+<div>div</div>
+
+</body>
+<script>
+
+ $('div').on('click',function () {
+     alert(1)
+ })
+
+ $('div').on('click.hello',function () {
+     alert(2)
+ })
+ $('input').on('click',function () {
+     $('div').trigger('click.hello')
+ })
+
+    
+
+
+</script>
+
+</html>
