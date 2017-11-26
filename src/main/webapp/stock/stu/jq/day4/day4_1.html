@@ -1,0 +1,48 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width:200px;
+            height:200px;
+            background: red;
+        }
+
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<body >
+
+<input type="button" value="click">
+<div id="div1">div</div>
+
+</body>
+<script>
+
+$(function () {
+    var onoff = true;
+    
+    $('input').click(function () {
+        if(onoff){
+//            $('#div1').hide(2000);
+//            $('#div1').fadeOut(2000);
+            $('#div1').slideUp();
+
+        }else {
+//            $('#div1').show('slow');
+//            $('#div1').fadeIn();
+            $('#div1').slideDown(2000)
+        }
+
+        onoff = !onoff;
+    })
+})
+
+</script>
+
+</html>

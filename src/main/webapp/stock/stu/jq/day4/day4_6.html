@@ -1,0 +1,55 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width:200px;
+            height:200px;
+            background: red;
+            position: absolute;
+        }
+        #div2{
+            width:200px;
+            height:200px;
+            background: #000;
+            position: absolute;
+            top:300px
+        }
+
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<body >
+
+<input type="button" value="click">
+<div id="div1">0</div>
+<div id="div2">div</div>
+</body>
+<script>
+
+$(function () {
+    $('#div1').mouseover(function () {
+        $(this).stop().animate({
+            width: 400,
+            height: 400,
+//           left:200
+        }, 1000)
+    })
+
+    $('#div1').mouseout(function () {
+        $(this).stop().animate({
+            width: 200,
+            height: 200,
+//           left:200
+        }, 1000)
+    })
+})
+
+</script>
+
+</html>
