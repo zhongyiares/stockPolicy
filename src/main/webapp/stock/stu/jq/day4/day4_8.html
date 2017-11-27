@@ -1,0 +1,59 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width:200px;
+            height:200px;
+            background: red;
+            position: absolute;
+        }
+        #div2{
+            width:200px;
+            height:200px;
+            background: #000;
+            position: absolute;
+            top:300px
+        }
+
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<body >
+<input id="input1" type="text">
+<input type="button" value="click">
+<div id="div1"></div>
+</body>
+<script>
+
+$(function () {
+
+  $('#input1').blur(function () {
+      $.ajax({
+          url:'/test/check',
+          data :{"name":$(this).val()},
+          type : 'GET',
+          async : true,
+          success : function (data) {
+              if(data.state == 1){
+                  $('#div1').html("有人注册过了")
+              }else {
+                  $('#div1').html("可以使用")
+              }
+          },
+          error:function (err) {
+              console.log(err)
+          }
+      })
+  })
+
+})
+
+</script>
+
+</html>
