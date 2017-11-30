@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{ margin:0; padding:0;}
+        li{
+            width:30px;
+            height:30px;
+            background:url(star.jpg) no-repeat 0 -70px;
+            float:left; list-style:none; margin:5px;
+        }
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<body >
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+<script>
+
+    $('li').click(function () {
+        $(this).attr('class','active');
+    });
+
+    $('input').click(function () {
+        $( $(this).attr('from')).find('li[class=active]').appendTo( $( $(this).attr('to'))).attr('class','');
+    });
+
+    $('span').click(function () {
+        $('input').trigger('click')
+    })
+
+
+</script>
+
+</html>

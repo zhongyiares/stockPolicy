@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #ul1 , #ul2{ width:200px; height:200px; border:1px #000 solid; float:left;}
+        li{ cursor:pointer;}
+        .active{ background:red;}
+        input{ float:left; margin-top:100px;}
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<body >
+<ul id="ul1">
+    <li>1111</li>
+    <li>2222</li>
+    <li>3333</li>
+    <li>4444</li>
+    <li>5555</li>
+</ul>
+<input type="button" value="→" from="#ul1" to="#ul2">
+<input type="button" value="←" from="#ul2" to="#ul1">
+<span style="font-size:40px;">↔</span>
+<ul id="ul2">
+    <li>aaaa</li>
+    <li>bbbb</li>
+    <li>cccc</li>
+    <li>dddd</li>
+    <li>eeee</li>
+</ul>
+</body>
+<script>
+
+    $('li').click(function () {
+        $(this).attr('class','active');
+    });
+
+    $('input').click(function () {
+        $( $(this).attr('from')).find('li[class=active]').appendTo( $( $(this).attr('to'))).attr('class','');
+    });
+
+    $('span').click(function () {
+        $('input').trigger('click')
+    })
+
+
+</script>
+
+</html>

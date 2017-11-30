@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+       ul{
+           width:328px;
+       }
+        li{
+            width:100px;
+            height:100px;
+            border:1px solid #000;
+            float: left;
+            margin-left:5px;
+            list-style:none;
+        }
+        .active{
+            background: red;
+        }
+
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<body >
+<input type="button" value="抽奖">
+<ul>
+    <li>1等奖</li>
+    <li>2等奖</li>
+    <li>3等奖</li>
+    <li>4等奖</li>
+    <li>5等奖</li>
+    <li>6等奖</li>
+    <li>7等奖</li>
+    <li>8等奖</li>
+    <li>9等奖</li>
+</ul>
+</body>
+<script>
+
+    var iNow = 0;
+    var $li = $('li');
+    var timer = null;
+    $('input').click(function () {
+        var step = Math.floor(Math.random()* $li.length + $li.length);
+        clearInterval(timer);
+        timer =  setInterval(function () {
+            $li.eq(iNow).attr("class",'active').siblings().attr('class','');
+            iNow++;
+            if(iNow == $li.length){
+                iNow =0;
+            }
+            step--;
+            if(step == 0){
+                clearInterval(timer);
+                alert($li.filter('[class=active]').html());
+            }
+
+        },100)
+
+
+    })
+
+</script>
+
+</html>
