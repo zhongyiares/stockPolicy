@@ -25,16 +25,31 @@
 </body>
 <script>
 
-    $('li').click(function () {
-        $(this).attr('class','active');
-    });
+    var bBtn = true;
+    var timer = null;
+    var oldIndex = -1;
 
-    $('input').click(function () {
-        $( $(this).attr('from')).find('li[class=active]').appendTo( $( $(this).attr('to'))).attr('class','');
-    });
+    $('li').mouseover(function () {
 
-    $('span').click(function () {
-        $('input').trigger('click')
+        bBtn = true;
+        clearTimeout(timer);
+        var index = $(this).index();
+        $('li').slice(0,index+1).css('backgroundPosition','0 0');
+        $('li').slice(index+1).css('backgroundPosition','0 -70px');
+    }).mouseout(function () {
+        if(!bBtn){
+            return;
+        }
+        timer = setTimeout(function () {
+            $('li').slice(0,oldIndex+1).css('backgroundPosition','0 0');
+            $('li').slice(oldIndex+1).css('backgroundPosition','0 -70px');
+        },200)
+
+
+    }).click(function () {
+
+        bBtn = false;
+        oldIndex = $(this).index();
     })
 
 
