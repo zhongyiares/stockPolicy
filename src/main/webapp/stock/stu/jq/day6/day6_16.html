@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<body >
+<input type="button" value="加载">
+<div id="div1"></div>
+</body>
+<script>
+    
+    $(document).ajaxStart(function () {
+        $('#div1').html("loading...")
+    })
+
+   $('input').click(function () {
+
+       $.ajax({
+           url:'/test/getAStr',
+           success:function (data) {
+              setTimeout(function(){
+                  $("#div1").html(data)
+              },1000)
+           },
+//           beforeSend:function () {
+//               $(this)
+//           }
+       })
+
+   })
+
+</script>
+
+</html>

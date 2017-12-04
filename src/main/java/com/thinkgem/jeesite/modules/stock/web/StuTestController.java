@@ -54,6 +54,11 @@ public class StuTestController extends BaseController {
 		return jsonObjectResult;
 	}
 
+	@ResponseBody
+	@RequestMapping(value = "getAStr")
+	public String getAStr( HttpServletRequest request, HttpServletResponse response) {
+		return "hhhhhh";
+	}
 
 
 
