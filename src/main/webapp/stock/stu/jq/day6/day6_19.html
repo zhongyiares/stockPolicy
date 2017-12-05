@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            position: absolute;
+            width:100px;
+            height:100px;
+            background: red;
+        }
+
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<body >
+
+<div id="div1">44</div>
+</body>
+<script>
+    
+$(function () {
+
+//    function aaa() {
+//        $('#div1').css('background','blue');
+//        $('#div1').dequeue('fx')
+//    }
+//
+//    $('#div1').animate({width:300})
+//    $('#div1').queue('fx',aaa);
+//    $('#div1').animate({height:300})
+//    $('#div1').animate({left:300})
+
+        $('#div1').animate({width:300})
+    $('#div1').animate({height:300})
+    $('#div1').queue('fx',function () {
+        setTimeout(function () {
+            $('#div1').dequeue('fx');
+        },2000)
+    })
+    $('#div1').animate({left:300})
+
+
+})
+
+</script>
+
+
+</html>

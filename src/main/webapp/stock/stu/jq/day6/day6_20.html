@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            position: absolute;
+            width:100px;
+            height:100px;
+            background: red;
+        }
+
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<body >
+
+<div id="div1">44</div>
+</body>
+<script>
+    
+$(function () {
+
+    function aaa() {
+        console.log('aaa')
+    }
+    function bbb() {
+        console.log('bbb')
+    }
+    function ccc() {
+        console.log('ccc')
+    }
+
+    var cb = $.Callbacks();
+    cb.add(aaa);
+    cb.add(bbb)
+    cb.fire();
+    cb.add(ccc);
+    cb.remove(aaa);
+    cb.fire();
+
+
+})
+
+</script>
+
+
+</html>
