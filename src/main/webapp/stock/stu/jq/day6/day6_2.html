@@ -1,0 +1,52 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width:200px;
+            height:200px;
+            position: absolute;
+            background: red;
+        }
+        #div2{
+            width:100px;
+            height:100px;
+            position: absolute;
+            background: yellowgreen;
+            top:-100px;
+        }
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<body >
+<div id="div1" >
+    <div id="div2"></div>
+</div>
+
+
+</body>
+<script>
+
+/*$('#div1').mouseover(function () {
+    $('#div2').stop().animate({top:0},500)
+})
+$('#div1').mouseout(function () {
+    $('#div2').stop().animate({top:-100},500)
+})*/
+
+
+$('#div1').mouseenter(function () {
+    $('#div2').animate({top:0},500)
+})
+$('#div1').mouseleave(function () {
+    $('#div2').animate({top:-100},500)
+})
+
+</script>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{ margin:0; padding:0;}
+        li{ list-style:none;}
+        ul{ position:fixed; right:0; top:50%; margin-top:-30px;}
+        ul li{ width:20px; height:20px; background:white; border-radius:50%; margin:5px; cursor:pointer;}
+        ul li.active{ background:red;}
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<body style="height:2000px" >
+<div>11111111111</div>
+<div>22222222222</div>
+<div>33333333333</div>
+<div>44444444444</div>
+<div>55555555555</div>
+<ul>
+    <li class="active"></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+<script>
+
+    $(function(){
+        var viewWidth = $(window).width();
+        var viewHight = $(window).height();
+        var arr = ['yellow','green','purple','gray','blue'];
+
+        $('div').css('width',viewWidth).css('height',viewHight);
+
+        $('div').each(function (i,e) {
+            $(this).css('background',arr[i]);
+        })
+
+        $(window).scroll(function () {
+            var index = Math.floor(($(document).scrollTop() + viewHight /2 ) /viewHight );
+            $('li').eq(index).attr('class','active').siblings().attr('class','');
+        })
+
+        $('li').click(function () {
+            $('body').animate({scrollTop : $(this).index() * viewHight},1000)
+        })
+
+
+    });
+
+</script>
+
+</html>

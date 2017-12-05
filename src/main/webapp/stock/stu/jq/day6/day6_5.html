@@ -1,0 +1,48 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<body >
+<img src="../day5/img/1.jpg">
+
+
+</body>
+<script>
+
+    $('img').on('scrollUp',function(){
+        $(this).css('width',700);
+    });
+
+    $('img').on('scrollDown',function(){
+        $(this).css('width',200);
+    });
+
+
+    //$('img').trigger('scrollUp');    //自定义事件是可以通过主动触发形式进行操作
+    //自定义事件是在系统事件的基础上，进行的二次封装
+
+
+    $('img').on('DOMMouseScroll',function(ev){
+        //console.log(ev.originalEvent.detail);
+        if(ev.originalEvent.detail > 0){
+            $('img').trigger('scrollDown');
+        }
+        else{
+            $('img').trigger('scrollUp');
+        }
+
+    });
+
+
+</script>
+
+</html>

@@ -1,0 +1,44 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width:200px;
+            height:200px;
+            position: absolute;
+            background: red;
+        }
+        #div2{
+            width:100px;
+            height:100px;
+            position: absolute;
+            background: yellowgreen;
+            top:-100px;
+        }
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<body >
+<div id="div1" >
+    <input type="text">
+    <p>pppp</p>
+</div>
+
+
+</body>
+<script>
+
+$('div').on('touchstart',{name:'zy'},function (e) {
+    console.log(e.originalEvent.changedTouches)
+})
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{ margin:0; padding:0;}
+        #login{ width:300px; height:300px; background:white; border:1px #000 solid; position:absolute;}
+        #close{ position:absolute; top:0; right:0;}
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<body style="height:2000px" >
+<input id="input1" type="button" value="登录" />
+</body>
+<script>
+
+    var $login = null;
+
+    $('#input1').click(function(){
+
+        if($login){ return; }
+
+        $login = $('<div id="login"><p>用户名:<input type="text" /></p><p>密码:<input type="text" /></p><div id="close">X</div></div>');
+
+        $('body').append($login);
+
+        $login.css('left',($(window).width() - $login.outerWidth())/2 );
+        $login.css('top',($(window).height() - $login.outerHeight())/2 );
+
+
+        $('#close').off().click(function(){
+            $login.remove();
+            $login = null;
+        });
+
+    });
+
+    $(window).scroll(function(){
+
+        $login.css('top',($(window).height() - $login.outerHeight())/2 + $(document).scrollTop() );
+
+    });
+
+</script>
+
+</html>
