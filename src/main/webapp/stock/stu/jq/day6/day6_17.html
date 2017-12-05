@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        
+        *{
+            background: #000;
+        }
+
+        .fr ul{
+            overflow: hidden;
+            margin-top: -10px;
+        }
+         .fr ul li{
+            width: 70px;
+            margin-right: 40px;
+            padding: 10px;
+            float: left;
+            font-size: 18px;
+            color: white;
+            list-style: none;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            color: white;
+            border-bottom: 4px solid transparent;
+        }
+         .fr ul li:hover{
+            color: #ed0501;
+        }
+         .fr ul li.zq-checked{
+            border-bottom: 4px solid #ed0501;
+            color: #ed0501;
+        }
+        .fr ul li select{
+            /*border-bottom: 4px solid #ed0501;*/
+            /*color: #ed0501;*/
+            color: white;
+            border: none;
+            font-size: 18px;
+
+            outline:0;
+        }
+
+
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+    <!--<link rel="stylesheet" href="index_newhomepage.css">-->
+</head>
+<body >
+<input type="button" value="加载">
+<div class="fr indexDataTabs">
+
+    <ul>
+        <!--<li data-src="/indexData/websocket/sgrcr002MinLine.html" class="zq-checked">分时</li>-->
+        <li  class="zq-checked"><select><option data-src="/indexData/websocket/sgrcr002MinLine.html">分时</option></select></li>
+        <!--  <li data-src="/indexData/websocket/sgrcr001MinLine.html" style="width: 81px;">2016分时</li>-->
+        <li data-src=""><select><option data-src="/indexData/websocket/sgrcr002FivedayLine.html">五日</option></select></li>
+        <li><select><option data-src="/indexData/websocket/sgrcr002DaykLine.html" value="1">2017日K</option><option data-src="/indexData/websocket/sgrcr002DaykLine.html" value="2">2016日K</option></select></li>
+        <li data-src="/indexData/websocket/sgrcr002WeekKLine.html">周K</li>
+        <li data-src="/indexData/websocket/sgrcr002MonthKLine.html">月K</li>
+        <li data-src="/indexData/websocket/sgrcr002MonthKLine.html" ><select class="indexDataSelect"><option value="1">111</option><option value="2">222</option></select></li>
+    </ul>
+
+
+
+</div>
+</body>
+<script>
+
+    $(".indexDataTabs select").click(function () {
+        $(".indexDataTabs select").removeClass("zq-checked")
+        $(this).addClass("zq-checked");
+        var tad = $(this).attr("data-src");
+        $("#indexFrame").attr("src", tad);
+    });
+
+</script>
+
+</html>
