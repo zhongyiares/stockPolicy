@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<body >
+
+<div id="div1">
+    <p><span>span1</span></p>
+    <span>span2</span>
+    <div>div2</div>
+    <span>span3</span>
+</div>
+</body>
+
+<script>
+
+    $(function () {
+//        $('*').css('border','1px red solid');
+
+//        $('#div1 >span').css('border','1px red solid')
+
+//        $('#div1').find('>span').css('border','1px red solid');
+
+//        $('p + span').css('border','1px red solid')
+
+        $('p ~ span').css('border','1px red solid')
+
+    })
+
+</script>
+
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            position: absolute;
+            width:100px;
+            height:100px;
+            background: red;
+        }
+
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<body >
+
+<div id="div1">44</div>
+</body>
+<script>
+
+    $.extend({
+        leftTrim :function (str) {
+            return str.replace(/^\s+/g,'');
+        },
+        rightTrim :function (str) {
+            return str.replace(/\s+$/g,'');
+        }
+
+    })
+
+</script>
+<script>
+
+    $(function () {
+        console.log("("+ $.rightTrim('  heoo  ')+")")
+    })
+
+</script>
+
+
+</html>

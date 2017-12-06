@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1 div{ width:200px; height:200px; border:1px #000 solid; display:none;}
+        #div1 .active{ background:red;}
+
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<body >
+
+<div id="div1">
+    <!--<input class="active" type="button" value="1">-->
+    <!--<input type="button" value="2">-->
+    <!--<input type="button" value="3">-->
+    <!--<div style="display:block;">111111</div>-->
+    <!--<div>222222</div>-->
+    <!--<div>333333</div>-->
+</div>
+</body>
+<script>
+
+    (function ($) {
+
+        var defaults = {
+            heads : ['1','2','3'],
+            bodys : ['1111','2222','3333'],
+            event : 'click'
+        };
+
+        var settings = {};
+        var $parent = null;
+        
+        
+        function fnTab(options) {
+            settings = $.extend(settings , defaults ,options);
+
+            $parent = this;
+            
+            create();
+
+            bind()
+        }
+        
+        function create() {
+            $.each(settings.heads ,function (i,val) {
+                var $input = $('<input type="button" value="'+val+'">');
+                $parent.append($input);
+                if(i == 0){
+                    $input.attr('class','active');
+                }
+            });
+            $.each(settings.heads ,function (i,val) {
+                var $div = $('<div>'+val+'</div>');
+                $parent.append($div);
+                if(i == 0){
+                   $div.show()
+                }
+            });
+        };
+
+        function bind() {
+            $parent.find('input').on(settings.event,function () {
+                $parent.trigger('beforeChange');
+                $(this).attr('class','active').siblings('input').attr('class',"");
+                $parent.find('div').eq( $(this).index('input')).show().siblings('div').hide();
+                $parent.trigger('afterChange');
+            })
+        }
+        
+        
+        $.fn.extend({
+            tab : fnTab
+        });
+        
+        
+
+    })(jQuery);
+
+</script>
+<script>
+
+    $(function () {
+        $('#div1').tab({
+            heads : ['教育','体育','娱乐','新闻'],
+            bodys : ['教育111','体222育','娱乐33333','新444444闻'],
+            event : 'mouseover'
+        });
+
+        $('#div1').on('beforeChange',function(){
+            alert($('#div1 div:visible').html());
+        });
+        $('#div1').on('afterChange',function(){
+            alert($('#div1 div:visible').html());
+        });
+    })
+
+</script>
+
+
+</html>

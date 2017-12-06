@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width:100px;
+            height:100px;
+            background:red;
+            margin:10px;
+        }
+
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<body >
+
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<div>4</div>
+<div>5</div>
+<div>6</div>
+
+</body>
+
+<script>
+
+    $(function () {
+
+        $('div').eq(0).animate({width:400},5000);
+
+        $(document).click(function () {
+//            $('div:animated').css('background','blue');
+
+//            $('div:eq(1)').css('background','blue')
+
+//            $('div:even').css('background','blue')
+
+//            $('div:odd').css('background','blue')
+
+//            $('div:first').css('background','blue');
+
+        $('div:gt(2)').css('background','blue')
+
+    })
+
+    })
+
+</script>
+</html>
