@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../js/jquery-ui-1.11.4/jquery-ui.css">
+    <style>
+
+    </style>
+</head>
+<body>
+
+<div id="div1">
+   0%
+</div>
+
+
+</body>
+<script src="../js/jquery-1.11.1.js"></script>
+<script src="../js/jquery-ui-1.11.4/jquery-ui.js"></script>
+<script>
+    $.widget('zy.myProgressBar',$.ui.mouse,{
+        options : {
+            number : 0,
+            ut : '%',
+            start : function(){}
+        },
+        _create : function(){
+
+            var val = this.options.number + this.options.ut;
+
+            this.element.html( val );
+
+            this._mouseInit();
+
+        },
+        _setOption : function(key,value){
+
+            if(key == 'number'){
+                this.options.number = value;
+                var val = this.options.number + this.options.ut;
+                this.element.html( val );
+            }
+        },
+        aaa : function(){
+            alert(123);
+        },
+        _mouseDown : function(){
+            this.options.start();
+        }
+    })
+</script>
+<script>
+
+    $('#div1').myProgressBar({
+        number : 6,
+        ut : '百分比',
+        /*start : function(){
+            alert(123);
+        }*/
+    });
+
+    $('#div1').on('click',function(){
+     $('#div1').myProgressBar('option','number','50');
+     $('#div1').myProgressBar('aaa');
+     });
+
+</script>
+</html>

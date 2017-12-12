@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../js/jquery-ui-1.11.4/jquery-ui.css">
+    <style>
+        #div1{ width:200px; height:200px; background:red; position:absolute;}
+
+        #dialog{ width:300px; height:300px; border:1px #000 solid; position:absolute; left:100px; top:100px;}
+        #dialog .title{ height:40px; overflow:hidden; border-bottom:1px #000 solid;}
+        #dialog .content{ height:200px; overflow:hidden; border-bottom:1px #000 solid;}
+    </style>
+</head>
+<body>
+
+<input type="button" value="点击">
+<div id="dialog">
+    <div class="title">
+        <span style="float:left;">标题的内容</span>
+        <span class="close" style="float:right">X</span>
+    </div>
+    <div class="content">
+        弹窗的内容
+    </div>
+    <input type="button" value="确认">
+    <input type="button" value="取消">
+</div>
+
+</body>
+<script src="../js/jquery-1.11.1.js"></script>
+<script src="../js/jquery-ui-1.11.4/jquery-ui.js"></script>
+<script>
+
+    var onoff = true;
+
+    $('#dialog').draggable({
+        //axis : 'x'
+        //cursor : 'move',
+        //cursorAt : { left : 0 , top : 0 },
+        //delay: 300,
+        handle : '.title',
+        create :function () {
+            console.log(3333)
+        },
+//        start :function () {
+//            console.log(4444)
+//        }
+    });
+
+    $('#dialog').on('dragstart',function () {
+        console.log(888)
+    })
+
+    $('input').click(function(){
+//        $('#dialog').draggable('option','axis','y')
+//        console.log($('#dialog').draggable('option','axis'))
+    });
+
+
+</script>
+</html>
