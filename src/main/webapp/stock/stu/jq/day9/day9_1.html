@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../js/jquery-ui-1.11.4/jquery-ui.css">
+    <style>
+        #div1{
+            width: 100px;
+            height:100px;
+            background: green;
+        }
+    </style>
+</head>
+<body>
+
+
+<div id="div1">
+    <p>pppp</p>
+    <span>span</span>
+    <span>span</span>
+    <span>span</span>
+    <span>span</span>
+
+</div>
+
+</body>
+<script src="../js/jquery-1.11.1.js"></script>
+<script src="../js/jquery-ui-1.11.4/jquery-ui.js"></script>
+<script>
+
+$('#div1').click(function () {
+    $(this).animate({
+        width:400,
+        height:400
+    },1000,'easeOutBounce');
+})
+
+</script>
+</html>
