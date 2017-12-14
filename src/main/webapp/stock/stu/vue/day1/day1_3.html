@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+
+<div id="box">
+    <ul>
+        <li v-for="val in arr">{{val}} {{$index}}</li>
+    </ul>
+
+    <hr>
+    <ul>
+        <li v-for="item in json">
+            {{item}} {{$index}} {{$key}}
+        </li>
+    </ul>
+
+
+    <hr>
+    <ul>
+        <li v-for="(k,v) in json">
+            {{k}} {{v}} {{$index}} {{$key}}
+        </li>
+    </ul>
+</div>
+</body>
+<script>
+
+
+
+    $(function () {
+        var c = new Vue({
+            el : '#box',
+            data :{
+                arr:[2,3,4,6],
+                json:{a:'zy',b:"fff",c:"df"}
+            }
+        });
+    })
+
+</script>
+</html>

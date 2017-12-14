@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+
+<div id="box">
+   <input type="button" value="按钮" v-on:mouseover="add(5)">
+    <br>
+    <ul>
+        <li v-for="v in arr">
+            {{v}}
+        </li>
+    </ul>
+</div>
+</body>
+<script>
+
+
+
+    $(function () {
+        var c = new Vue({
+            el : '#box',
+            data :{
+                arr:[2,3,4,6],
+                json:{a:'zy',b:"fff",c:"df"}
+            },
+            methods :{
+                show:function (e) {
+                    alert(e)
+                },
+                add:function () {
+                    this.arr.push('ffffeee')
+                }
+            }
+        });
+    })
+
+</script>
+</html>
