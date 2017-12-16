@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue-resource.js"></script>
+</head>
+<body>
+
+<div id="box">
+  <input type="button" value="按钮" @click="get()" >
+
+</div>
+</body>
+<script>
+
+
+
+    $(function () {
+        var c = new Vue({
+            el : '#box',
+            data :{
+
+            },
+            methods :{
+                get:function () {
+                    this.$http.get('zy1.txt').then(function (res) {
+                        alert(res.data);
+                    },function (res) {
+                        alert(res.status);
+                    });
+                },
+
+            }
+        });
+    })
+
+</script>
+</html>

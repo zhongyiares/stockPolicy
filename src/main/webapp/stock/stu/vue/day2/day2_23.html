@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue-resource.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+<div id="box">
+   {{a | json }}
+    <br/>
+    {{b}}
+
+</div>
+
+</body>
+
+<script>
+
+
+
+    var vm = new Vue({
+        data:{
+            a :{name :'zy',age:28},
+            b:33
+        },
+        methods:{
+            show:function () {
+              alert(1)
+            }
+        }
+    }).$mount('#box');
+
+    vm.$watch('a',function () {
+        alert(4)
+        this.b = this.a.age + 1;
+    },{deep:true})
+
+   $(document).click(function () {
+       vm.a.name = 'fff';
+   })
+
+
+</script>
+
+</html>

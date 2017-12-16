@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+
+<div id="box">
+   <!--<img src="{{url}}">-->
+    <br>
+    <!--<img v-bind:src="url">-->
+    <img :src="url" :width="w">
+</div>
+</body>
+<script>
+
+
+
+    $(function () {
+        var c = new Vue({
+            el : '#box',
+            data :{
+                url :'http://img.taopic.com/uploads/allimg/120727/201995-120HG1030762.jpg',
+                w:'200px'
+            },
+            methods :{
+                show:function () {
+                    alert(166)
+//                    e.preventDefault();
+                },
+
+            }
+        });
+    })
+
+</script>
+</html>

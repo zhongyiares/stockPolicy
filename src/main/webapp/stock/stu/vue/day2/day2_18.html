@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue-resource.js"></script>
+</head>
+<body>
+<div id="box">
+    <span v-red="a">gg</span>
+
+    </div>
+
+</div>
+
+</body>
+
+<script>
+
+    Vue.directive('red',function(){
+        this.el.style.background = 'red';
+    });
+
+    var vm = new Vue({
+        data:{
+            a :"fff"
+        },
+        methods:{
+            show:function () {
+              alert(1)
+            }
+        }
+    }).$mount('#box');
+
+//    console.log(vm.$log())
+
+
+</script>
+
+</html>

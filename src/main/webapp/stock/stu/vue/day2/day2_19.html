@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue-resource.js"></script>
+    <style>
+        .box1{
+            width: 200px;
+            height:200px;
+            background: red;
+            position: absolute;
+            left: 0;
+            top:0;
+        }
+        .box2{
+            width: 200px;
+            height:200px;
+            background: green;
+            position: absolute;
+            left: 0;
+            top:20px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div class="box1" v-drag>
+
+    </div>
+    <div class="box2" v-drag>
+
+    </div>
+
+</div>
+
+</body>
+
+<script>
+
+    Vue.directive('drag',function(){
+        var oDiv = this.el;
+        oDiv.onmousedown = function (e) {
+            var disX = e.clientX - oDiv.offsetLeft;
+            var disY = e.clientY - oDiv.offsetTop;
+
+            document.onmousemove = function (e) {
+                var l = e.clientX - disX;
+                var t = e.clientY - disY;
+                oDiv.style.left = l+'px';
+                oDiv.style.top = t +'px';
+            }
+
+            document.onmouseup = function () {
+                document.onmousemove = null;
+                document.onmouseup = null;
+            }
+        }
+    });
+
+    var vm = new Vue({
+        data:{
+            a :"fff"
+        },
+        methods:{
+            show:function () {
+              alert(1)
+            }
+        }
+    }).$mount('#box');
+
+//    console.log(vm.$log())
+
+
+</script>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue-resource.js"></script>
+</head>
+<body>
+
+<div id="box">
+  <input type="button" value="按钮" @click="get()" >
+
+</div>
+</body>
+<script>
+
+
+
+  /*  $(function () {
+        var c = new Vue({
+            el : '#box',
+            data :{
+
+            },
+            methods :{
+                get:function () {
+                    this.$http.jsonp('http://nuff.eastmoney.com/EM_Finance2015TradeInterface/JS.ashx',
+                            {id :'6005191'},{
+                                jsonp:'cb'
+                            }
+                      ).then(function (res) {
+                        alert(res.data.Value);
+                    },function (res) {
+                        alert(res.status);
+                    });
+                },
+
+            }
+        });
+    })*/
+
+  $(function () {
+      var c = new Vue({
+          el : '#box',
+          data :{
+
+          },
+          methods :{
+              get:function () {
+                  this.$http.jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
+                          {wd :'t'},{
+                              jsonp:'cb'
+                          }
+                  ).then(function (res) {
+                      alert(res.data.s);
+                  },function (res) {
+                      alert(res.status);
+                  });
+              },
+
+          }
+      });
+  })
+
+</script>
+</html>

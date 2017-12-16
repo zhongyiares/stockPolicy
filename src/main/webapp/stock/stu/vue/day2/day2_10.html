@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue-resource.js"></script>
+</head>
+<body>
+<div id="box">
+    <input type='text' v-model="name">
+    <input type="button"  value="添加" @click="add()">
+ <ul>
+     <li v-for="val in arr" track-by="$index">
+         {{val}}
+     </li>
+ </ul>
+</div>
+
+</body>
+
+<script>
+
+    var vm = new Vue({
+
+        data:{
+            arr:['zy','zzy','tjl'],
+            name :""
+        },
+        methods:{
+            add:function () {
+                this.arr.push(this.name);
+                this.name="";
+            }
+        }
+    }).$mount('#box');
+
+//    console.log(vm.$log())
+
+
+</script>
+
+</html>

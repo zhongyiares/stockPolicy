@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue-resource.js"></script>
+    <style>
+        .box1{
+            width: 200px;
+            height:200px;
+            background: red;
+            position: absolute;
+            left: 0;
+            top:0;
+        }
+        .box2{
+            width: 200px;
+            height:200px;
+            background: green;
+            position: absolute;
+            left: 0;
+            top:20px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <span v-red="'green'">aaa</span>
+
+</div>
+
+</body>
+
+<script>
+
+    Vue.directive('red',function(color){
+        this.el.style.background = color
+    });
+
+    var vm = new Vue({
+        data:{
+            a :"blue"
+        },
+        methods:{
+            show:function () {
+              alert(1)
+            }
+        }
+    }).$mount('#box');
+
+//    console.log(vm.$log())
+
+
+</script>
+
+</html>

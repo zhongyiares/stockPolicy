@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+
+<div id="box">
+  <input type="text" v-model="msg">
+    <br/>
+    {{msg}}
+    <br/>
+    {{*msg}}
+    <br/>
+    {{{msg}}}
+</div>
+</body>
+<script>
+
+
+
+    $(function () {
+        var c = new Vue({
+            el : '#box',
+            data :{
+               msg :"jj"
+            },
+            methods :{
+                show:function () {
+                    alert(166)
+//                    e.preventDefault();
+                },
+
+            }
+        });
+    })
+
+</script>
+</html>

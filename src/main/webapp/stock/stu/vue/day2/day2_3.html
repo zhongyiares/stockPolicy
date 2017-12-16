@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue-resource.js"></script>
+</head>
+<body>
+<div id="box">
+    <span>{{{msg}}}</span>
+    <span v-html="msg"></span>
+</div>
+
+</body>
+
+<script>
+
+    new Vue({
+        el :'#box',
+        data:{
+            msg :'<strong>welcome</strong>'
+        }
+    });
+
+</script>
+
+</html>

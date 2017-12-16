@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue-resource.js"></script>
+    <style>
+       zns-red{
+           width: 100px;
+           height:100px;
+           background: red;
+           display: block;
+       }
+    </style>
+</head>
+<body>
+<div id="box">
+    <zns-red>ff</zns-red>
+
+</div>
+
+</body>
+
+<script>
+
+    Vue.elementDirective('zns-red',{
+        bind:function () {
+            this.el.style.background = 'green'
+        }
+    });
+
+    var vm = new Vue({
+        data:{
+            a :"blue"
+        },
+        methods:{
+            show:function () {
+              alert(1)
+            }
+        }
+    }).$mount('#box');
+
+//    console.log(vm.$log())
+
+
+</script>
+
+</html>

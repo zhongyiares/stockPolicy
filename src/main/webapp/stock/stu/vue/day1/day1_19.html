@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue-resource.js"></script>
+</head>
+<body>
+
+<div id="box">
+  <input type="text" v-model="t1" @keyup="get()">
+  <ul>
+      <li v-for="val in myData">{{val}}</li>
+  </ul>
+   <p v-show="myData.length == 0">暂无数据</p>
+
+
+</div>
+</body>
+<script>
+
+  $(function () {
+      var c = new Vue({
+          el : '#box',
+          data :{
+              myData :[],
+              t1 : "dd",
+          },
+
+          methods :{
+              get:function () {
+                 this.$http.jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',{wd : this.t1}
+                 ,{
+                     jsonp : 'cb'
+                 }) .then(function (res) {
+                        this.myData = res.data.s;
+                 },function (res) {
+
+                 })
+              },
+
+          }
+      });
+  })
+
+</script>
+</html>

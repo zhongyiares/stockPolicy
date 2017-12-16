@@ -1,0 +1,493 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>无标题文档</title>
+    <style>
+        *{ margin:0; padding:0;}
+        li{ list-style:none;}
+        .writeText{ width:300px; min-height:30px; border:1px solid #333; border-radius:5%; float:left; cursor:no-drop;}
+        .writeText span{ float:left; position:relative; line-height:30px; padding:0 10px; cursor:default;}
+        .writeText em{ width:13px; height:13px; background:url(delete.png) no-repeat; position:absolute; right:0; top:0; cursor:pointer;}
+        label{ float:left; line-height:30px;}
+        .btn{ width:30px; height:30px; cursor:pointer;}
+        .set{ margin-bottom:20px; position:relative;}
+        .popupMenu{ width:200px; max-height:400px; border:1px #000 solid; position:absolute; left:370px; top:0; background:white; z-index:100; overflow-x:auto; overflow-x:hidden; display:none;}
+        .popupMenu ul{ width:200px;}
+        .popupMenu ul li{ padding:5px; cursor:pointer;}
+        .popupMenu ul span.cur{ background:#06F; color:white;}
+        .popupMenu ul span:hover{ background:#06F; color:white;}
+
+        #div1{ width:500px; margin:0 auto; padding:300px 0;}
+    </style>
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script>
+        $(function(){
+
+//尽量把独立的功能封装成一个函数 (模块化的过程) , 这些独立的函数互相调用操作
+
+//功能相同的函数 : 独立成公用的 (一个函数)
+
+//功能不相同的函数 : 差异性(封装成两个函数)  , 缺失性(封装成一个函数)
+
+            function popup(id,type,data){
+
+                var $popup = $('#popup_'+id);
+                var $main = $('#main_'+id);
+
+                init();
+
+                //初始化函数
+                function init(){
+
+                    $(document).off().on('click',function(){
+                        hidePopup();
+                    });
+
+                    $('#custom_'+id).on('click',function(){
+                        return false;
+                    });
+
+                    bindAddBtn();
+                    bindRemoveBtn();
+                    textRemove();
+                    if(type == 2){
+                        textDrag();
+                    }
+                }
+
+                //功能相同的函数 : 显示层按钮操作
+                function bindAddBtn(){
+                    $('#add_'+id).on('click',function(){
+
+                        if(type == 1){
+                            showRadio();
+                        }
+                        else if(type == 2){
+                            showMore();
+                        }
+
+                        hidePopup();
+                        $popup.show();
+                        moveVisible();
+
+                    });
+                }
+                //功能相同的函数 : 删除数据按钮操作
+                function bindRemoveBtn(){
+                    $('#remove_'+id).on('click',function(){
+                        $main.find('em').trigger('click');
+                    });
+                }
+
+                //功能相同的函数 : 关闭弹层
+                function hidePopup(){
+                    $('.popupMenu').hide();
+                }
+
+                //功能相同的函数 : 运动弹出层
+                function moveVisible(){
+                    $popup.css('top',0);
+                    var popupVal = $popup.offset().top + $popup.outerHeight();
+                    var viewVal = $(window).height() + $(document).scrollTop();
+                    if( popupVal > viewVal ){
+                        $popup.animate({ top : -(popupVal - viewVal) });
+                    }
+                }
+
+                //功能相同的函数 : 创建列表数据
+                function createData(){
+
+                    var $ul = $('<ul>');
+                    $.each(data,function(i,val){
+
+                        var $li = $('<li><span>'+ val.name +'</span></li>');
+
+                        $ul.append($li);
+
+                    });
+
+                    $popup.append($ul);
+
+                }
+                //功能相同的函数 : 删除输入框中的数据
+                function textRemove(){
+
+                    $main.delegate('em','click',function(){
+
+                        var cusIndex = $(this).parent().attr('cusIndex');
+
+                        $(this).parent().remove();
+
+                        $popup.find('span').each(function(i,elem){
+
+                            if( $(elem).parent().index() == cusIndex ){
+                                $(elem).attr('class','');
+                            }
+
+                        });
+
+                    });
+
+                }
+
+                //功能不相同的函数 : 显示单选
+                function showRadio(){
+                    if( !$popup.find('ul').length ){
+                        createData();
+                        bindRadio();
+                    }
+                }
+                //功能不相同的函数 : 显示多选
+                function showMore(){
+                    if( !$popup.find('ul').length ){
+                        createData();
+                        setAllCur();
+                        bindMore()
+                    }
+                }
+
+                //功能不相同的函数 : 多选按钮
+                function setAllCur(){
+                    var $div = $('<div><a href="javascript:;">全选</a></div>');
+                    $popup.prepend( $div );
+                    $div.on('click',function(){
+                        $popup.find('span').each(function(i,elem){
+                            if( $(elem).attr('class') != 'cur' ){
+                                $(elem).trigger('click');
+                            }
+                        });
+
+                    });
+                }
+
+                //功能不相同的函数 : 单选操作
+                function bindRadio(){
+                    var $span = $popup.find('span');
+                    $span.on('click',function(){
+                        if( $(this).attr('class') == 'cur' ){
+                            $(this).attr('class','');
+                            textRadio.remove();
+                        }
+                        else{
+                            $span.attr('class','');
+                            $(this).attr('class','cur');
+                            textRadio.add( $(this).html() , $(this).parent().index() );
+                        }
+
+                    });
+
+                }
+                //功能不相同的函数 : 多选操作
+                function bindMore(){
+                    var $span = $popup.find('span');
+                    $span.on('click',function(){
+                        if( $(this).attr('class') == 'cur' ){
+                            $(this).attr('class','');
+                            textMore.remove( $(this).parent().index() );
+                        }
+                        else{
+                            $(this).attr('class','cur');
+                            textMore.add( $(this).html() , $(this).parent().index() );
+                        }
+                    });
+                }
+
+                //功能不相同的函数 : 单选的添加和删除
+                var textRadio = (function(){
+                    function add(text,index){
+                        var $span = $('<span cusIndex="'+index+'">'+text+'<em></em></span>');
+                        $main.html($span);
+                    }
+                    function remove(){
+                        $main.empty();
+                    }
+                    return {
+                        add : add,
+                        remove : remove
+                    };
+                })();
+
+                //功能不相同的函数 : 多选的添加和删除
+                var textMore = (function(){
+                    function add(text,index){
+                        var $span = $('<span cusIndex="'+index+'">'+text+'<em></em></span>');
+                        $main.append($span);
+                    }
+                    function remove(index){
+
+                        $main.find('span').each(function(i,elem){
+
+                            if($(elem).attr('cusIndex') == index){
+                                $(elem).remove();
+                            }
+
+                        });
+
+                    }
+                    return {
+                        add : add,
+                        remove : remove
+                    };
+                })();
+
+
+                //功能不相同的函数 : 拖拽排序
+                function textDrag(){
+
+                    $main.delegate('span','mousemove',function(){
+
+                        if( $(this).siblings().length ){
+                            $(this).css('cursor','move');
+                        }
+                        else{
+                            $(this).css('cursor','default');
+                        }
+
+                    });
+
+                    $main.delegate('span','mousedown',function(ev){
+
+                        if( $(this).siblings().length ){
+
+                            var $cloneSpan = $(this).clone();
+                            var This = this;
+
+                            $cloneSpan.css({ position : 'absolute' , left : ev.pageX + 10 , top : ev.pageY + 10 });
+
+                            $('body').append( $cloneSpan );
+
+                            $(this).css('opacity',0.5);
+
+                            setCursor.add( $(this) );
+
+                            $(document).on('mousemove.drag',function(ev){
+                                $cloneSpan.css({ position : 'absolute' , left : ev.pageX + 10 , top : ev.pageY + 10 });
+                                var $closestSpan = findClosest({x : ev.pageX , y : ev.pageY});
+
+                                setCursor.move($closestSpan,ev.pageX);
+
+                            });
+                            $(document).on('mouseup.drag',function(ev){
+                                $(this).off('.drag');
+                                $cloneSpan.remove();
+                                $(This).css('opacity',1);
+
+                                var $closestSpan = findClosest({x : ev.pageX , y : ev.pageY});
+                                //console.log( $closestSpan );
+                                var $closestSpanX = $closestSpan.offset().left + $closestSpan.outerWidth()/2;
+                                if( $closestSpanX < ev.pageX ){
+                                    $closestSpan.after( $(This) );
+                                }
+                                else{
+                                    $closestSpan.before( $(This) );
+                                }
+
+                                setCursor.remove();
+
+                            });
+                            return false;
+                        }
+                    });
+
+                    function findClosest(xy){
+
+                        var arr = bindRow( xy.y );
+
+                        var $closestSpan = bindCol( arr , xy.x );
+
+                        return $closestSpan;
+                    }
+                    function bindRow(y){
+
+                        var value = 9999;
+                        var minY = 0;
+                        var arr = [];
+
+                        $main.find('span').each(function(i,elem){
+
+                            var num = Math.abs($(elem).offset().top + $(elem).outerHeight()/2 - y);
+                            if( num < value ){
+                                value = num;
+                                minY = $(elem).offset().top;
+                            }
+
+                        });
+
+                        $main.find('span').each(function(i,elem){
+                            if( $(elem).offset().top == minY ){
+                                arr.push( $(elem) );
+                            }
+                        });
+                        return arr;
+                    }
+                    function bindCol(arr,x){
+
+                        var value = 9999;
+                        var $cloestSpan = null;
+
+                        $.each(arr,function(i,elem){
+                            var num = Math.abs($(elem).offset().left + $(elem).outerWidth()/2 - x);
+                            if(num < value){
+                                value = num;
+                                $cloestSpan = $(elem);
+                            }
+                        });
+                        return $cloestSpan;
+                    }
+
+                    var setCursor = (function(){
+                        var $cur = null;
+                        function add( $span ){
+                            $cur = $('<span>|</span>');
+                            $cur.css({ position : 'absolute' , left : $span.offset().left , top : $span.offset().top + 3 });
+                            $('body').append($cur);
+                        }
+                        function remove(){
+                            $cur.remove();
+                        }
+                        function move($closestSpan,x){
+                            var $closestSpanX = $closestSpan.offset().left + $closestSpan.outerWidth()/2;
+                            if($closestSpanX < x){
+                                $cur.css({left : $closestSpan.offset().left +  $closestSpan.outerWidth() , top : $closestSpan.offset().top + 3});
+                            }
+                            else{
+                                $cur.css({left : $closestSpan.offset().left , top : $closestSpan.offset().top + 3});
+                            }
+
+                        }
+                        return {
+                            add : add,
+                            remove : remove,
+                            move : move
+                        };
+                    })();
+
+                }
+
+            }
+
+            popup('1000',1,[
+                {name : '办公室'},
+                {name : '会议室'},
+                {name : '室外'},
+                {name : '咖啡厅'}
+            ]);
+
+            popup('2000',1,[
+                {name : '8:00~10:00'},
+                {name : '12:00~13:00'},
+                {name : '14:00~16:00'},
+                {name : '20:00~23:00'},
+                {name : '23:00~00:00'}
+            ]);
+
+            popup('3000',2,[
+                {name : '李彦宏1'},
+                {name : '马云1'},
+                {name : '马化腾1'},
+                {name : '李彦宏2'},
+                {name : '马云2'},
+                {name : '马化腾2'},
+                {name : '李彦宏3'},
+                {name : '马云3'},
+                {name : '马化腾3'},
+                {name : '李彦宏4'},
+                {name : '马云4'},
+                {name : '马化腾4'},
+                {name : '李彦宏5'},
+                {name : '马云5'},
+                {name : '马化腾5'},
+                {name : '李彦宏6'},
+                {name : '马云6'},
+                {name : '马化腾6'},
+                {name : '李彦宏7'},
+                {name : '马云7'},
+                {name : '马化腾7'}
+            ]);
+
+            popup('4000',2,[
+                {name : '采购部'},
+                {name : '销售部'},
+                {name : '策划部'},
+                {name : '运维中心'},
+                {name : 'IT部'},
+                {name : '人力资源'},
+                {name : '行政部门'},
+                {name : '公关部'},
+                {name : '法务部门'},
+                {name : '市场部'},
+                {name : '运营部'},
+                {name : '游戏部门'},
+                {name : '社区部门'},
+                {name : '电商部门'},
+                {name : '客服部'}
+            ]);
+
+        });
+    </script>
+</head>
+
+<body>
+<div id="div1">
+    <div id="custom_1000" class="set">
+        <label>地点:</label><div id="main_1000" class="writeText">
+        <!--<span>公安局<em></em></span>
+        <span>公安局123<em></em></span>
+        <span>公安局333333<em></em></span>
+        <span>公安局<em></em></span>-->
+
+    </div>
+        <input id="add_1000" class="btn" type="button" value="+">
+        <input id="remove_1000" class="btn" type="button" value="-">
+        <div id="popup_1000" class="popupMenu">
+            <!--<ul>
+                <li><span>公安局</span></li>
+                <li><span>公安局</span></li>
+                <li><span class="cur">公安局</span></li>
+                <li><span>公安局</span></li>
+                <li><span>公安局</span></li>
+                <li><span>公安局</span></li>
+                <li><span>公安局</span></li>
+                <li><span class="cur">公安局</span></li>
+                <li><span>公安局</span></li>
+                <li><span>公安局</span></li>
+                <li><span>公安局</span></li>
+                <li><span>公安局</span></li>
+                <li><span class="cur">公安局</span></li>
+                <li><span>公安局</span></li>
+                <li><span>公安局</span></li>
+            </ul>-->
+        </div>
+        <br clear="all"/>
+    </div>
+    <div id="custom_2000" class="set">
+        <label>时间:</label><div id="main_2000" class="writeText">
+
+    </div>
+        <input id="add_2000" class="btn" type="button" value="+">
+        <input id="remove_2000" class="btn" type="button" value="-">
+        <div id="popup_2000" class="popupMenu"></div>
+        <br clear="all"/>
+    </div>
+    <div id="custom_3000" class="set">
+        <label>领导:</label><div id="main_3000" class="writeText">
+
+    </div>
+        <input id="add_3000" class="btn" type="button" value="+">
+        <input id="remove_3000" class="btn" type="button" value="-">
+        <div id="popup_3000" class="popupMenu"></div>
+        <br clear="all"/>
+    </div>
+    <div id="custom_4000" class="set">
+        <label>部门:</label><div id="main_4000" class="writeText">
+
+    </div>
+        <input id="add_4000" class="btn" type="button" value="+">
+        <input id="remove_4000" class="btn" type="button" value="-">
+        <div id="popup_4000" class="popupMenu"></div>
+        <br clear="all"/>
+    </div>
+</div>
+</body>
+</html>

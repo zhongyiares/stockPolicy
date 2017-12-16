@@ -60,6 +60,13 @@ public class StuTestController extends BaseController {
 		return "hhhhhh";
 	}
 
+	@ResponseBody
+	@RequestMapping(value = "getAdd")
+	public String getAdd( HttpServletRequest request, HttpServletResponse response) {
+		int val = Integer.parseInt(request.getParameter("a")) + Integer.parseInt(request.getParameter("b"));
+		return  String.valueOf(val);
+	}
+
 
 
 }

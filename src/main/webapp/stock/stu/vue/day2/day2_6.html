@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue-resource.js"></script>
+</head>
+<body>
+<div id="box">
+  <span v-text="a"></span>
+</div>
+
+</body>
+
+<script>
+
+   var vm = new Vue({
+//        el :'#box',
+        data:{
+            a:1
+        },
+
+    });
+
+//   vm.$el.style.background='red';
+
+//   console.log(vm.$data.a)
+    vm.$mount('#box');
+
+
+
+</script>
+
+</html>

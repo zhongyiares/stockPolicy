@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue-resource.js"></script>
+</head>
+<body>
+<div id="box">
+  <span v-text="a"></span>
+    {{aa}}
+</div>
+
+</body>
+
+<script>
+
+    var vm = new Vue({
+        aa :22,
+        show : function () {
+            alert(3)
+        },
+        data:{
+            a:1
+        }
+    }).$mount('#box');
+
+    console.log(vm.$options.aa)
+    vm.$options.show();
+
+
+</script>
+
+</html>
