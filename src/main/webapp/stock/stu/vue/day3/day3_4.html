@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/animate.css">
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue-resource.js"></script>
+    <style>
+        #box{
+            width:400px;
+            margin: 0 auto;
+        }
+        #div1{
+            width:100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+
+</head>
+<body>
+<div id="box">
+  <my-aa></my-aa>
+</div>
+
+</body>
+
+<script>
+
+  Vue.component('my-aa',{
+      template : '<strong>{{msg}}</strong>',
+      data :function () {
+          var dataJson = {msg:'zyares55'};
+          return dataJson;
+      }
+  });
+    new Vue({
+        el :'#box',
+        data :{
+            bSign : true
+        },
+
+    });
+
+
+</script>
+
+</html>
