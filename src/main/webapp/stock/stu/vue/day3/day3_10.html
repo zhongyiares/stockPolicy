@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/animate.css">
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue-resource.js"></script>
+    <style>
+        #box{
+            width:400px;
+            margin: 0 auto;
+        }
+        #div1{
+            width:100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+
+</head>
+<body>
+<div id="box">
+  <aaa>
+      <!--<ul>-->
+          <!--<li>11</li>-->
+          <!--<li>11</li>-->
+          <!--<li>11</li>-->
+      <!--</ul>-->
+  </aaa>
+</div>
+
+</body>
+
+<template id="aaa">
+    <h1>1111</h1>
+    <slot>这是默认的</slot>
+    <p>welcome vue</p>
+</template>
+
+
+<script>
+
+    new Vue({
+        el :'#box',
+        data :{
+            a:'aaa'
+        },
+        components:{
+            'aaa' :{
+                template :'#aaa',
+                data:function () {
+                    return {
+                        msg :222,
+                        msg2 :'我是父组件'
+                    };
+                },
+
+            }
+        }
+
+    });
+
+
+</script>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/animate.css">
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue-resource.js"></script>
+    <style>
+        #box{
+            width:400px;
+            margin: 0 auto;
+        }
+        #div1{
+            width:100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+
+</head>
+<body>
+<div id="box">
+  <aaa>{{msg}}</aaa>
+</div>
+
+<template id="aaa">
+    <span>我是父组件{{msg}}</span>
+    <bbb @get-a="getA"></bbb>
+</template>
+<template id="bbb">
+    <h3>我是子组件{{a}}</h3>
+    <input type="button" value="send" @click="send">
+</template>
+</body>
+
+
+
+<script>
+
+    new Vue({
+        el :'#box',
+        data :{
+            a:'aaa'
+        },
+        components:{
+            'aaa' :{
+                template :'#aaa',
+                data:function () {
+                    return {
+                        msg :222,
+                        msg2 :'我是父组件'
+                    };
+                },
+                methods:{
+                    getA : function (msg) {
+                        this.msg = msg;
+                    }
+                },
+                components :{
+                    'bbb' :{
+                        data :function () {
+                          return {
+                              a :'jjj'
+                          }
+                        },
+                        template :'#bbb',
+                        methods :{
+                            send :function () {
+                               this.$emit("get-a",this.a);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    });
+
+
+</script>
+
+</html>
