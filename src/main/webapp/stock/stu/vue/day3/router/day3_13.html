@@ -43,6 +43,20 @@
 
 <template id="news">
     <h3>我是新闻</h3>
+    <div>
+        <a v-link="{path:'/news/detail/001/age/34'}">新闻001</a>
+        <a v-link="{path:'/news/detail/002/age/33'}">新闻002</a>
+    </div>
+    <router-view></router-view>
+</template>
+
+
+<template id="detail">
+    {{$route.params | json}}
+    <br/>
+   {{$route.path}}
+    <br/>
+    {{$route.query | json}}
 </template>
 
 <script>
@@ -56,6 +70,9 @@
         template :'#news'
     });
 
+    var Detail = Vue.extend({
+       template :'#detail'
+    });
     var router =  new VueRouter();
     router.map({
        'home':{
@@ -74,7 +91,12 @@
            }
        } ,
         'news':{
-           component : News
+           component : News,
+            subRoutes:{
+               '/detail/:id/age/:age33':{
+                   component:Detail
+               }
+            }
         }
     });
 
