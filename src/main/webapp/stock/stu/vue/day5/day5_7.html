@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue2.js"></script>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<script>
+
+    var Home = {
+      template :'#aaa'
+    };
+
+//    Vue.component('my-aaa',Home);
+
+    $(function () {
+
+        Vue.config.keyCodes.ctrl = 17;
+
+        new Vue({
+            el:'#box',
+            data :{
+               list:['width','height','box']
+            },
+            components:{
+                'bbb':Home
+            },
+            methods:{
+                change:function () {
+                    alert('2')
+                }
+            }
+        });
+    })
+
+</script>
+<body>
+
+    <div id="box">
+        <input type="text" @keyup.ctrl="change">
+    </div>
+
+</body>
+</html>

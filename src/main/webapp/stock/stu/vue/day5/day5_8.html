@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue2.js"></script>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<script>
+
+    var Home = {
+      template :'#aaa'
+    };
+
+//    Vue.component('my-aaa',Home);
+
+    $(function () {
+
+        Vue.filter('toDou',function(input,a,b){
+            alert(a+","+b)
+            return input < 10 ? '0'+input:""+input;
+        })
+
+        new Vue({
+            el:'#box',
+            data :{
+              msg : 955
+            },
+            components:{
+                'bbb':Home
+            },
+            methods:{
+                change:function () {
+                    alert('2')
+                }
+            }
+        });
+    })
+
+</script>
+<body>
+
+    <div id="box">
+       {{msg | toDou('23','ff')}}
+    </div>
+
+</body>
+</html>

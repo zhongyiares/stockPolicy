@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue2.js"></script>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<script>
+
+    var Home = {
+      template :'#aaa'
+    };
+
+//    Vue.component('my-aaa',Home);
+
+    $(function () {
+        new Vue({
+            el:'#box',
+            data :{
+               list:['width','height','box']
+            },
+            components:{
+                'bbb':Home
+            },
+            methods:{
+                add:function () {
+                    this.list.push('zyarse')
+                }
+            }
+        });
+    })
+
+</script>
+<body>
+
+    <div id="box">
+        <input type="button" value="添加" @click="add">
+        <ul>
+            <li v-for="(val,index22) in list" :key="index22">
+                {{val}} {{index22}}
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>
