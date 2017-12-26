@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue2.js"></script>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<script>
+
+    var Home = {
+      template :'#aaa'
+    };
+
+//    Vue.component('my-aaa',Home);
+
+    $(function () {
+        new Vue({
+            el:'#box',
+            data :{
+                msg :'welcome vue2.0'
+            },
+            components:{
+                'bbb':Home
+            }
+        });
+    })
+
+</script>
+<body>
+    <template id="aaa">
+        <div>
+            <h4>輔導輔導</h4><strong>發發發方法44</strong>
+        </div>
+    </template>
+
+    <div id="box">
+        <bbb></bbb>
+        {{msg}}
+    </div>
+
+</body>
+</html>

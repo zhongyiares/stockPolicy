@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue2.js"></script>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<script>
+
+    Vue.component('my-aaa',{
+        template:'#aaa'
+    })
+
+    $(function () {
+        new Vue({
+            el:'#box',
+            data :{
+                msg :'welcome vue2.0'
+            }
+        });
+    })
+
+</script>
+<body>
+    <template id="aaa">
+        <div>
+            <h4>輔導輔導</h4><strong>發發發方法</strong>
+        </div>
+    </template>
+
+    <div id="box">
+        <my-aaa></my-aaa>
+        {{msg}}
+    </div>
+
+</body>
+</html>
