@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue2.js"></script>
+    <script src="../js/jquery-1.11.1.js"></script>
+    <style>
+        p{
+            width:100px;
+            height:100px;
+            background: red;
+            margin: auto;
+            /*opacity:0;*/
+        }
+
+
+    </style>
+    <link rel="stylesheet" href="../css/animate.css">
+</head>
+<script>
+
+
+
+    $(function () {
+
+        new Vue({
+            el:'#box',
+            data :{
+                show : false
+            },
+            methods:{
+                beforeEnter(e){
+//                    alert(e)
+                },
+                enter(){
+                },
+                afterEnter(e){
+//                    e.style.backgroundColor = 'blue'
+                }
+            }
+
+        });
+    })
+
+</script>
+<body>
+
+
+
+   <div id="box">
+      <input type="button" value="点击" @click="show= !show">
+       <transition enter-active-class="zoomInLeft"
+                    leave-active-class="zoomOutRight">
+           <p v-show="show" class="animated">
+           </p>
+       </transition>
+   </div>
+
+</body>
+</html>

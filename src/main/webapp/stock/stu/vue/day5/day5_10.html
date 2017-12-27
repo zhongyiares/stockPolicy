@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue2.js"></script>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<script>
+
+    var Event = new Vue();
+
+
+    var A = {
+      template :'#aaa',
+        data(){
+            return {
+                a :'我是a数据'
+            }
+        },
+        methods:{
+            send(){
+                Event.$emit('a-msg',this.a);
+            }
+        }
+    };
+
+    var B = {
+        template :'#bbb',
+        data(){
+            return {
+                b :'我是b数据'
+            }
+        },
+        methods:{
+            send(){
+                Event.$emit('b-msg',this.b);
+            }
+        }
+    };
+
+    var C = {
+        template :'#ccc',
+        data(){
+            return {
+                a:'',
+                b:''
+            }
+        },
+        mounted(){
+//            var _this = this;
+            Event.$on('a-msg',(function (a) {
+                this.a = a;
+            }).bind(this));
+            Event.$on('b-msg',(function (b) {
+                this.b = b;
+            }).bind(this));
+        }
+    };
+
+
+
+    $(function () {
+
+        new Vue({
+            el:'#box',
+            data :{
+                a:'我是父组件的细心'
+            },
+            components:{
+                'com-a':A,
+                'com-b':B,
+                'com-c':C,
+
+
+            },
+
+        });
+    })
+
+</script>
+<body>
+
+<template id="aaa">
+    <div>
+        <span>我是A组件</span> --> {{a}}
+        <input type="button" value="把A数据给C" @click="send">
+    </div>
+</template>
+<template id="bbb">
+    <div>
+        <span>我是B组件</span> --> {{b}}
+        <input type="button" value="把A数据给C" @click="send">
+    </div>
+</template>
+<template id="ccc">
+    <div>
+        <span>我是C组件</span><br/>
+        <span>A:{{a}}</span><br/>
+        <span>B:{{b}}</span><br/>
+    </div>
+</template>
+
+   <div id="box">
+       <com-a></com-a>
+       <com-b></com-b>
+       <com-c></com-c>
+   </div>
+
+</body>
+</html>

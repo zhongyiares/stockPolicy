@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue2.js"></script>
+    <script src="../js/jquery-1.11.1.js"></script>
+</head>
+<script>
+
+    var Home = {
+      template :'#aaa'
+    };
+
+//    Vue.component('my-aaa',Home);
+
+    $(function () {
+
+        Vue.filter('toDou',function(input,a,b){
+            alert(a+","+b)
+            return input < 10 ? '0'+input:""+input;
+        })
+
+        new Vue({
+            el:'#box',
+            data :{
+                a:'我是父组件的细心'
+            },
+            components:{
+                'child-com':{
+                    data :function () {
+                        return {
+                            b :''
+                        }
+                    },
+                    props :['msg'],
+                    template:'#child',
+                    mounted :function(){
+                        this.b = this.msg
+                    },
+                    methods:{
+                        change:function () {
+                           this.b = '被更改了'
+                        }
+                    }
+                }
+            },
+
+        });
+    })
+
+</script>
+<body>
+
+    <template id="child">
+        <div>
+            <h3>我是子组件</h3>
+            <input type="button" value="按钮" @click="change">
+            <strong>{{b}}</strong>
+        </div>
+    </template>
+
+    <div id="box">
+        父级: -> {{a}}
+        <br/>
+       <child-com :msg="a"></child-com>
+    </div>
+
+</body>
+</html>
