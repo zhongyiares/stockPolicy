@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/vue2.js"></script>
+    <script src="../js/2/vue-router.min.js"></script>
+    <style>
+    .router-link-active{
+        background: red;
+    }
+
+
+    </style>
+    <link rel="stylesheet" href="../css/animate.css">
+
+</head>
+<script>
+
+    var Home = {
+        template:'<h3>我是主页</h3>'
+    };
+
+    var News = {
+        template:'<h3>我是新闻</h3>'
+    };
+
+    var routes = [
+        {path:'/home',component:Home},
+        {path:'/news',component:News},
+        {path:'*',redirect:'/home'}
+    ];
+
+    const router = new VueRouter({
+        routes
+    });
+
+
+    $(function () {
+        new Vue({
+            el:'#box',
+            router,
+            data :{
+                show : "",
+                list:['apple','banna','pear','fdf']
+            }
+
+        });
+    })
+
+</script>
+<body>
+
+   <div id="box">
+      <div>
+          <router-link to="/home">主页</router-link>
+          <router-link to="/news">新闻</router-link>
+      </div>
+      <div>
+          <router-view></router-view>
+      </div>
+   </div>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../js/vue2.js"></script>
+    <script src="../js/2/vue-router.min.js"></script>
+    <style>
+    .router-link-active{
+        background: red;
+    }
+
+
+    </style>
+    <link rel="stylesheet" href="../css/animate.css">
+
+</head>
+<script>
+
+    var Home = {
+        template:`<h3>我是主页</h3>`
+    };
+
+    var User = {
+        template:`
+            <div>
+                <h3>我是用户</h3>
+                <ul>
+                    <li><router-link to="/user/strive/age/10">strive</router-link></li>
+                   <li><router-link to="/user/zyares/age/28">zyares</router-link></li>
+                   <li><router-link to="/user/zhongyiares/age/28">zhongyiares</router-link></li>
+                </ul>
+                <div><router-view></router-view></div>
+            </div>
+
+        `
+    };
+
+    var UserDetail = {
+        template:'<div>{{$route.params}}</div>'
+    }
+
+    var routes = [
+        {path:'/home',component:Home},
+        {
+            path:'/user',
+            component:User,
+            children:[
+                {path:':username/age/:age',component:UserDetail}
+            ]
+        },
+        {path:'*',redirect:'/home'}
+    ];
+
+    const router = new VueRouter({
+        routes
+    });
+
+
+    $(function () {
+        new Vue({
+            el:'#box',
+            router,
+            data :{
+                show : "",
+                list:['apple','banna','pear','fdf']
+            },
+            methods:{
+                add(){
+                    router.push({path:'home'});
+                },
+                replace(){
+                    router.replace({path:'user'})
+                }
+            }
+
+        });
+    })
+
+</script>
+<body>
+
+   <div id="box">
+       <input type="button" value="添加" @click="add">
+       <input type="button" value="替换" @click="replace">
+      <div>
+          <router-link to="/home">主页</router-link>
+          <router-link to="/user">用户</router-link>
+      </div>
+      <div>
+         <transition enter-active-class="animated bounceInLeft"
+          leave-active-class="animated bounceOutRight" >
+             <router-view></router-view>
+         </transition>
+      </div>
+   </div>
+
+</body>
+</html>
