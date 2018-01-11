@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../../../static/bootstrap/3.7/css/bootstrap.css">
+    <script src="../js/jquery-1.11.1.js"></script>
+    <script src="../../../../static/bootstrap/3.7/js/bootstrap.min.js"></script>
+    <script src="../js/vue2.js"></script>
+    <script src="../js/2/vue-router.min.js"></script>
+    <style>
+    .router-link-active{
+        background: red;
+    }
+
+
+    </style>
+    <link rel="stylesheet" href="../css/animate.css">
+
+</head>
+<script>
+
+
+
+
+    $(function () {
+        new Vue({
+            el:'#box',
+            router,
+            data :{
+                show : "",
+                list:['apple','banna','pear','fdf']
+            },
+            methods:{
+                add(){
+                    router.push({path:'home'});
+                },
+                replace(){
+                    router.replace({path:'user'})
+                }
+            }
+
+        });
+    })
+
+</script>
+<body>
+
+   <div id="app">
+       <button class="btn btn-primary">按钮</button>
+   </div>
+
+</body>
+</html>
