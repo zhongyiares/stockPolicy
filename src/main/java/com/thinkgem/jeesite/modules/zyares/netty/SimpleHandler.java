@@ -1,5 +1,10 @@
 package com.thinkgem.jeesite.modules.zyares.netty;
 
+import com.alibaba.fastjson.JSONObject;
+import com.thinkgem.jeesite.modules.zyares.netty.longTest.Media;
+import com.thinkgem.jeesite.modules.zyares.netty.longTest.Request;
+import com.thinkgem.jeesite.modules.zyares.netty.longTest.RequestParm;
+import com.thinkgem.jeesite.modules.zyares.netty.longTest.Response;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
@@ -23,11 +28,19 @@ public class SimpleHandler extends ChannelInboundHandlerAdapter {
             ByteBuf req = (ByteBuf)msg;
             String content =  req.toString(Charset.defaultCharset());
             System.out.println(content);
-            MyThread thread = new MyThread();
-            thread.setChannel(ctx.channel());
-            thread.setMsg("this is test response \r\n");
-            thread.start();
-            ctx.channel().writeAndFlush("李四\r\n");
+//            MyThread thread = new MyThread();
+//            thread.setChannel(ctx.channel());
+//            thread.setMsg("this is test response \r\n");
+//            thread.start();
+
+            RequestParm request = JSONObject.parseObject(content,RequestParm.class);
+            Object result = Media.execute(request);
+
+            Response response = new Response();
+            response.setId(request.getId());
+            response.setContent(result);
+            ctx.channel().write(JSONObject.toJSONString(response));
+            ctx.channel().writeAndFlush("\r\n");
         }
     }
 
@@ -42,10 +55,10 @@ public class SimpleHandler extends ChannelInboundHandlerAdapter {
             IdleStateEvent event = (IdleStateEvent) evt;
             if(event.equals(IdleState.READER_IDLE)){
                 System.out.println("读空闲=====>");
-                ctx.close();
+//                ctx.close();
             }else if(event.equals(IdleState.WRITER_IDLE)){
                 System.out.println("写空闲=====>");
-            }else if(event.equals(IdleState.ALL_IDLE)){
+            }else if(event.equals(IdleState.WRITER_IDLE)){
                 System.out.println("读写空闲=====>");
                 ctx.channel().writeAndFlush("ping\r\n");
             }

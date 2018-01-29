@@ -1,5 +1,8 @@
 package com.thinkgem.jeesite.modules.zyares.netty;
 
+import com.alibaba.fastjson.JSONObject;
+import com.thinkgem.jeesite.modules.zyares.netty.longTest.DefaultFuture;
+import com.thinkgem.jeesite.modules.zyares.netty.longTest.Response;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -20,8 +23,12 @@ public class ClientHandlerSimple extends ChannelInboundHandlerAdapter {
             return;
         }
 
-        ctx.channel().attr(AttributeKey.valueOf("channelKey")).set(msg.toString());
+//        ctx.channel().attr(AttributeKey.valueOf("channelKey")).set(msg.toString());
+
         System.out.println("接受服务器的数据为:"+msg.toString());
-        ctx.channel().close();
+        Response response = JSONObject.parseObject(msg.toString(), Response.class);
+        DefaultFuture.revice(response);
+
+//        ctx.channel().close();
     }
 }
