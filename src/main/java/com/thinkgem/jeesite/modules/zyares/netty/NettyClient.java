@@ -1,6 +1,7 @@
 package com.thinkgem.jeesite.modules.zyares.netty;
 
 import io.netty.bootstrap.Bootstrap;
+import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
@@ -9,7 +10,9 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.DelimiterBasedFrameDecoder;
 import io.netty.handler.codec.Delimiters;
+import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
+import io.netty.util.AttributeKey;
 
 import java.nio.charset.Charset;
 
@@ -18,36 +21,66 @@ import java.nio.charset.Charset;
  */
 public class NettyClient {
 
+    private static EventLoopGroup group = null;
+    private static Bootstrap bootstrap = null;
+
+    static {
+        group = new NioEventLoopGroup();
+        bootstrap = new Bootstrap();
+        bootstrap.channel(NioSocketChannel.class);
+        bootstrap.group(group);
+        bootstrap.option(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT);
+//        bootstrap.option(ChannelOption.RCVBUF_ALLOCATOR,Ac);
+        bootstrap.option(ChannelOption.SO_KEEPALIVE,true)
+                .handler(new ChannelInitializer<NioSocketChannel>() {
+
+                    @Override
+                    protected void initChannel(NioSocketChannel ch) throws Exception {
+                        ch.pipeline().addLast(new DelimiterBasedFrameDecoder(Integer.MAX_VALUE,Delimiters.lineDelimiter()[0]));
+                        ch.pipeline().addLast(new StringDecoder());
+                        ch.pipeline().addLast( new ClientHandlerSimple());
+                        ch.pipeline().addLast(new StringEncoder());
+                    }
+                });
+    }
+
     public static void main(String[] args) {
 
-        EventLoopGroup group = new NioEventLoopGroup();
         try {
-            Bootstrap bootstrap = new Bootstrap();
-            bootstrap.channel(NioSocketChannel.class);
-            bootstrap.group(group);
-            bootstrap.option(ChannelOption.SO_KEEPALIVE,true)
-            .handler(new ChannelInitializer<NioSocketChannel>() {
-
-                @Override
-                protected void initChannel(NioSocketChannel ch) throws Exception {
-                    ch.pipeline().addLast(new DelimiterBasedFrameDecoder(Integer.MAX_VALUE,Delimiters.lineDelimiter()[0]));
-
-                    ch.pipeline().addLast( new ClientHandlerSimple());
-                    ch.pipeline().addLast(new StringEncoder());
-                }
-            });
-
             ChannelFuture channelFuture = bootstrap.connect("localhost",8090).sync();
             String person = "张三\r\n";
             channelFuture.channel().writeAndFlush(person);
 //            channelFuture.channel().writeAndFlush(Delimiters.lineDelimiter()[0]);
+
             channelFuture.channel().closeFuture().sync();
+
+            Object obj = channelFuture.channel().attr(AttributeKey.valueOf("channelKey")).get();
+            System.out.println(obj+", the time:"+System.currentTimeMillis());
 
         }catch (Exception e){
             e.printStackTrace();
         }finally {
             group.shutdownGracefully();
         }
+    }
 
+    static class dataProcess implements Runnable{
+
+        @Override
+        public void run() {
+            try {
+                ChannelFuture channelFuture = bootstrap.connect("localhost",8090).sync();
+                String person = "张三\r\n";
+                channelFuture.channel().writeAndFlush(person);
+//            channelFuture.channel().writeAndFlush(Delimiters.lineDelimiter()[0]);
+
+                channelFuture.channel().closeFuture().sync();
+
+                Object obj = channelFuture.channel().attr(AttributeKey.valueOf("channelKey")).get();
+                System.out.println(obj+", the time:"+System.currentTimeMillis());
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
     }
 }
