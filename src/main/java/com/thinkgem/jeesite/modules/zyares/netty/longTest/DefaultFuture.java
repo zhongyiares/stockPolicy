@@ -2,6 +2,7 @@ package com.thinkgem.jeesite.modules.zyares.netty.longTest;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -19,6 +20,10 @@ public class DefaultFuture {
 
     private volatile Lock lock = new ReentrantLock();
 
+    private long timeout;
+
+    private final long start = System.currentTimeMillis();
+
     private volatile Condition condition = lock.newCondition();
 
     public DefaultFuture() {
@@ -35,18 +40,37 @@ public class DefaultFuture {
         return id;
     }
 
-
     public Response getResponse() {
-
         lock.lock();
         while (!hasDone()){
             try {
-                condition.wait();
-                lock.unlock();
-            } catch (InterruptedException e) {
+                condition.await();
+            } catch (Exception e) {
                 e.printStackTrace();
             }finally {
+                lock.unlock();
+            }
+        }
 
+
+        return response;
+    }
+
+    public Response getResponse(long timeout) {
+        long start = System.currentTimeMillis();
+        lock.lock();
+
+        while (!hasDone()){
+            try {
+                condition.await(timeout, TimeUnit.MILLISECONDS);
+                if(System.currentTimeMillis() -start >= timeout){
+                    break;
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }finally {
+                lock.unlock();
             }
         }
 
@@ -107,4 +131,47 @@ public class DefaultFuture {
     public void setCondition(Condition condition) {
         this.condition = condition;
     }
+
+    public long getTimeout() {
+        return timeout;
+    }
+
+    public void setTimeout(long timeout) {
+        this.timeout = timeout;
+    }
+
+    public long getStart() {
+        return start;
+    }
+
+
+    static class FutureTimeOutThread extends Thread {
+
+        @Override
+        public void run() {
+            while (true){
+                for(long futureId : FUTURES.keySet()){
+                    DefaultFuture f = FUTURES.get(futureId);
+                    if(f.getTimeout() > 0){
+                        if(System.currentTimeMillis() - f.getStart() > f.getTimeout()){
+                            Response res = new Response();
+                            res.setContent("");
+                            res.setMsg("请求超时");
+                            res.setStatus(1);
+                            res.setId(f.getId());
+                            DefaultFuture.revice(res);
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    static {
+        FutureTimeOutThread timeOutThread = new FutureTimeOutThread();
+        timeOutThread.setDaemon(true);
+        timeOutThread.start();
+    }
+
 }

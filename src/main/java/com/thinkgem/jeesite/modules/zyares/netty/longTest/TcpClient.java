@@ -58,7 +58,7 @@ public class TcpClient {
             channelFuture.channel().writeAndFlush("\r\n");
 
             DefaultFuture future = new DefaultFuture(request);
-            Response response = future.getResponse();
+            Response response = future.getResponse(1);
 
             return response;
         }catch (Exception e){
