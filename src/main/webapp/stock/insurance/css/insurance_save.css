@@ -40,9 +40,7 @@ header .logo {
     display: block;
     margin-top: 11px;
 }
-/*.fr{*/
-/*float: right;*/
-/*}*/
+
 header .fr a.exit:hover {
     background-color: rgba(0, 0, 0, 0.5);
     text-decoration: none;

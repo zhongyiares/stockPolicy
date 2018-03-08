@@ -6,6 +6,8 @@
     <title>附加导航插件</title>
     <link rel="stylesheet" href="../../static/bootstrap/3.7/css/bootstrap.css">
     <link rel="stylesheet" href="css/insurance_save.css">
+    <link rel="stylesheet" href="css/jquery.datetimepicker.css">
+
 </head>
 
 <body >
@@ -22,7 +24,6 @@
                 </a>
             </div>
         </div>
-
     </div>
 </header>
 
@@ -175,11 +176,11 @@
                         <legend contenteditable="true" class="con_form_legend">追溯期</legend>
                         <div class="col-md-6 con_form_info_lab">
                             <label contenteditable="true">开始日期</label>
-                            <input type="text" placeholder="填写信息">
+                            <input class='normal-input datetime ltNow' type="text" id="establishDate"  readonly >
                         </div>
                         <div class="col-md-6 con_form_info_lab">
                             <label contenteditable="true">结束日期</label>
-                            <input type="text" placeholder="填写信息">
+                            <input class='normal-input datetime ltNow' type="text" id="establishDate1"  readonly >
                         </div>
                         <div class="col-md-6 con_form_info_lab">
                             <label contenteditable="true">合计</label>
@@ -191,11 +192,11 @@
                         <legend contenteditable="true" class="con_form_legend">保险期间</legend>
                         <div class="col-md-6 con_form_info_lab">
                             <label contenteditable="true">开始日期</label>
-                            <input type="text" placeholder="填写信息">
+                            <input class='normal-input datetime ltNow' type="text" id="establishDate2"  readonly >
                         </div>
                         <div class="col-md-6 con_form_info_lab">
                             <label contenteditable="true">结束日期</label>
-                            <input type="text" placeholder="填写信息">
+                            <input class='normal-input datetime ltNow' type="text" id="establishDate3"  readonly >
                         </div>
                         <div class="col-md-6 con_form_info_lab">
                             <label contenteditable="true">合计</label>
@@ -206,12 +207,12 @@
                     <div class="col-md-12 con_form_info">
                         <legend contenteditable="true" class="con_form_legend">保险合同争议解决方式</legend>
                         <div class="col-md-6 con_form_info_lab">
-                            <label class="checkbox" contenteditable="true">
+                            <label class="checkbox" contenteditable="false">
                                 <input type="checkbox">诉讼
                             </label>
                         </div>
                         <div class="col-md-6 con_form_info_lab">
-                            <label class="checkbox" contenteditable="true">
+                            <label class="checkbox" contenteditable="false">
                                 <input type="checkbox">提交
                             </label>
                         </div>
@@ -254,7 +255,15 @@
 </body>
 <script src="../../static/jquery/jquery-1.9.1.js"></script>
 <script src="../../static/bootstrap/3.7/js/bootstrap.min.js"></script>
+<script src="js/jquery.datetimepicker.js"></script>
 <script>
-
+    $('.datetime').datetimepicker({
+        lang: "ch", //语言选择中文 注：旧版本 新版方法：$.datetimepicker.setLocale('ch');
+        format: "Ymd",      //格式化日期
+        timepicker: false,    //关闭时间选项
+        yearStart: 2000,     //设置最小年份
+        yearEnd: 2050,        //设置最大年份
+        todayButton: false    //关闭选择今天按钮
+    });
 </script>
 </html>
