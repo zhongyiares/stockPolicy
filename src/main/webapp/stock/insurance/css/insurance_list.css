@@ -1,0 +1,27 @@
+
+/** content start */
+
+.con_wrap{
+    margin-top: 100px;
+    position: relative;
+}
+
+ .con_create{
+    margin-top: -51px;
+    height: 43px;
+    width: 120px;
+    font-size: 16px;
+    float: right;
+    position: relative;
+    margin-right: 20px;
+    line-height: 30px;
+}
+
+
+
+/** content end */
+
+.footer_wrapper{
+    margin: 0 auto 0px;
+    position: fixed;
+}
