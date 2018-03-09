@@ -3,8 +3,11 @@ $.extend( true, $.fn.dataTable.defaults, {
 	"sDom": "<'row'<'col-sm-6'l><'col-sm-6'f>r>t<'row'<'col-sm-6'i><'col-sm-6'p>>",
 	"sPaginationType": "bootstrap",
 	"oLanguage": {
-		"sLengthMenu": "Display _MENU_ records"
-	}
+		"sLengthMenu": "展示 _MENU_ 记录",
+        "sSearch": "搜索:",
+        "sInfo": "Showing _START_ to _END_ of _TOTAL_ entries"
+	},
+
 } );
 
 
